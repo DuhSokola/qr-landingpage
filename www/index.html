@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" ng-cloak>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-cloak>{{'TITLE' | translate}}</title>
 
     <!-- bower:css -->
-    <link rel="stylesheet" href="externals/bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="externals/bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
 
     <!-- inject:css -->
@@ -15,32 +16,32 @@
 
 </head>
 <body>
+    <md-content layout-padding>
+        <div ui-view></div>
+    </md-content>
 
-<md-content layout-padding>
-    <div ui-view></div>
-</md-content>
 
 <!-- bower:js -->
 <script src="externals/bower_components/angular/angular.js"></script>
+<script src="externals/bower_components/angular-animate/angular-animate.js"></script>
+<script src="externals/bower_components/angular-aria/angular-aria.js"></script>
+<script src="externals/bower_components/angular-messages/angular-messages.js"></script>
+<script src="externals/bower_components/angular-material/angular-material.js"></script>
 <script src="externals/bower_components/angular-translate/angular-translate.js"></script>
 <script src="externals/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="externals/bower_components/angular-resource/angular-resource.js"></script>
 <script src="externals/bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="externals/bower_components/underscore/underscore.js"></script>
-<script src="externals/bower_components/angular-animate/angular-animate.js"></script>
-<script src="externals/bower_components/angular-aria/angular-aria.js"></script>
-<script src="externals/bower_components/angular-messages/angular-messages.js"></script>
-<script src="externals/bower_components/angular-material/angular-material.js"></script>
 <!-- endbower -->
 
 <!-- inject:js -->
 <script src="/app/app.constants.js"></script>
 <script src="/app/app.js"></script>
 <script src="/app/app.routes.js"></script>
-<script src="/app/components/contactForm/contactForm.ctrl.js"></script>
-<script src="/app/components/contactForm/contactForm.js"></script>
 <script src="/app/components/languageSwitch/languageSwitch.ctrl.js"></script>
 <script src="/app/components/languageSwitch/languageSwitch.js"></script>
+<script src="/app/components/contactForm/contactForm.ctrl.js"></script>
+<script src="/app/components/contactForm/contactForm.js"></script>
 <script src="/app/shared/resources/customerResource.js"></script>
 <!-- endinject -->
 </body>

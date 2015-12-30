@@ -1,14 +1,129 @@
-<div>
-    <form name="userForm">
-        <div layout-gt-xs="row">
-            <md-input-container flex-gt-xs>
-                <label translate="CONTACT_LABEL_FIRSTNAME">First name</label>
-                <input ng-model="data.firstName">
-            </md-input-container>
-            <md-input-container flex-gt-xs>
-                <label translate="CONTACT_LABEL_LASTNAME">Last Name</label>
-                <input ng-model="data.lastName">
-            </md-input-container>
+<div layout="column">
+    <div>
+        <div layout="column" layout-wrap layout-gt-sm="row" flex="100">
+            <div flex="30"></div>
+            <div flex="30"><img style="height: auto; width: 100%;" src="assets/style/img/vw-passat.jpg">
+            </div>
+            <div flex="30"></div>
         </div>
-    </form>
+        <form name="userForm">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First name</label>
+                    <input ng-model="user.firstName">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Last Name</label>
+                    <input ng-model="theMax">
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label translate="CONTACT_LABEL_STREET"></label>
+                    <input ng-model="data.lastName">
+                </md-input-container>
+                <md-input-container class="md-block" flex-xs-sm>
+                    <label translate="CONTACT_LABEL_STREET_NR"></label>
+                    <input ng-model="data.lastName">
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-xs-sm>
+                    <label translate="CONTACT_LABEL_ZIP"></label>
+                    <input ng-model="data.lastName">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label translate="CONTACT_LABEL_CITY"></label>
+                    <input ng-model="data.lastName">
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label translate="CONTACT_LABEL_TELEPHONE"></label>
+                    <input ng-model="data.lastName">
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label translate="CONTACT_LABEL_EMAIL"></label>
+                    <input ng-model="data.lastName">
+                </md-input-container>
+            </div>
+
+            <div layout="column" layout-wrap layout-gt-xs="row" flex="100">
+                <fieldset class="standard contact-fieldset" flex="30">
+                    <legend>Katalogversand</legend>
+                    <div layout="column" layout-wrap layout-gt-sm="row" flex="100">
+                        <div flex-xs flex="50">
+                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                Katalog bestellen {{ data.cb1 }}
+                            </md-checkbox>
+                        </div>
+                        <div flex-xs flex="40">
+                            <md-radio-group ng-model="data.group1">
+                                <md-radio-button value="Apple" class="md-primary">Elektronisch</md-radio-button>
+                                <md-radio-button value="Banana" class="md-primary">Gedruckt</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                </fieldset>
+                <br/>
+                <fieldset class="standard contact-fieldset" flex="30">
+                    <legend>Probefahrt</legend>
+                    <div layout="column" layout-wrap layout-gt-sm="row" flex="100">
+                        <div flex-xs flex="50">
+                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                Kontaktaufnahme für Probefahrt {{ data.cb1 }}
+                            </md-checkbox>
+                        </div>
+                        <div flex-xs flex="40">
+                            <md-radio-group ng-model="data.group1">
+                                <md-radio-button value="Apple" class="md-primary">Email</md-radio-button>
+                                <md-radio-button value="Banana" class="md-primary">Telefon</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                </fieldset>
+                <br/>
+                <fieldset class="standard contact-fieldset" flex="30">
+                    <legend>Leasing</legend>
+                    <div layout="column" layout-wrap layout-gt-sm="row" flex="100">
+                        <div flex-xs flex="50">
+                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                Kontaktaufnahme für Leasingberatung {{ data.cb1 }}
+                            </md-checkbox>
+                        </div>
+                        <div flex-xs flex="40">
+                            <md-radio-group ng-model="data.group1">
+                                <md-radio-button value="Apple" class="md-primary">Email</md-radio-button>
+                                <md-radio-button value="Banana" class="md-primary">Telefon</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <br/>
+            <div layout="column" layout-gt-xs="row" flex="100">
+                <fieldset class="standard contact-fieldset">
+                    <legend>Newsletter</legend>
+                    <div flex-xs flex="50">
+                        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                            Newsletter
+                        </md-checkbox>
+                    </div>
+                </fieldset>
+            </div>
+            <br/>
+            <div layout="column" layout-gt-xs="row">
+                <fieldset class="standard contact-fieldset" flex="30">
+                    <legend>Datenschutzbestimmung</legend>
+                    <div flex-xs flex="50">
+                        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                            Datenschutzbestimmung gelesen
+                        </md-checkbox>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
 </div>

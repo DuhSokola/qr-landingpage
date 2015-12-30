@@ -59,6 +59,6 @@ gulp.task('browserSync', function() {
       baseDir: 'www'
     }
   });
-  gulp.watch(['app/**/*.js','app/**/*.html', 'externals/**/*.js', 'externals/**/*.html','*.html'], {cwd: 'www'}, reload);
+  gulp.watch(['app/**/*.js','app/**/*.html', 'assets/**/*.css', 'externals/**/*.js', 'externals/**/*.html','*.html'], {cwd: 'www'}, reload);
 });
 
