@@ -1,9 +1,26 @@
-@media screen and (min-width: 881px) {
-  .contact-fieldset{
-  }
+.error-text {
+    color: rgb(221, 44, 0);
 }
 
-@media screen and (max-width: 880px) {
-  .contact-fieldset{
-  }
+md-checkbox.error-checkbox .md-icon {
+    border-color: rgb(221, 44, 0);
+}
+
+md-radio-button.error-radio .md-off {
+    border-color: rgb(221, 44, 0);
+}
+
+@media screen and (min-width: 701px) {
+    .car-contact {
+        height: auto;
+        width: 500px;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .car-contact {
+        height: auto;
+        width: 100%;
+    }
 }
