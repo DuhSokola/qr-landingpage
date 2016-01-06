@@ -1,0 +1,48 @@
+<div layout="column" ng-controller="LeasingCalculatorFormCtrl">
+    <div>
+        <div layout="row">
+            <span translate="LEASINGCALC_PAYMENT"></span>
+            <span aria-label="red" aria-controls="red-slider">{{data.payment}}</span>
+        </div>
+        <div layout="row">
+            <md-slider style="padding-left:15px;" flex="95" min="0" max="25500" ng-model="data.payment" aria-label="blue" class>
+            </md-slider>
+        </div>
+
+        <div layout="row">
+            <span translate="LEASINGCALC_DURATION"></span>
+            <span aria-label="red" aria-controls="red-slider">{{data.duration}}</span>
+        </div>
+        <div layout="row">
+            <md-slider style="padding-left:15px;" flex="95" step="12" min="12" max="60" ng-model="data.duration" aria-label="blue" class>
+            </md-slider>
+        </div>
+
+        <div layout="row">
+            <span translate="LEASINGCALC_MILAGE"></span>
+            <span aria-label="red" aria-controls="red-slider">{{data.milage}}</span>
+        </div>
+        <div layout="row">
+            <md-slider style="padding-left:15px;" flex="95" step="5000" min="10000" max="50000" ng-model="data.milage" aria-label="blue" class>
+            </md-slider>
+        </div>
+
+        <div layout="row">
+            <span>Zinssatz</span>
+        </div>
+        <div layout="row">
+            <span>Nominal: 3.90%</span>
+        </div>
+        <div layout="row">
+            <span>Effektiv: 3.97%</span>
+        </div>
+
+        <br />
+
+        <div layout="row">
+            <md-checkbox id="checkbox-discount" ng-model="data.discount" aria-label="checkbox" class="md-primary">
+                <span translate="CONTACT_CATALOG"></span>
+            </md-checkbox>
+        </div>
+    </div>
+</div>

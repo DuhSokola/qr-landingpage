@@ -15,6 +15,15 @@
 
         $translateProvider.translations('DE', {
             "TITLE": "CH",
+            "LEASINGCALC_PAYMENT": "Sonderzahlung:",
+            "LEASINGCALC_DURATION": "Laufzeit:",
+            "LEASINGCALC_MILAGE": "Jährliche Laufleistung:",
+
+            "LANDINGPAGE_LEASING" : "Leasing berechnen",
+            "LANDINGPAGE_TESTDRIVE" : "Probefahrt",
+            "LANDINGPAGE_CATALOG" : "Katalog",
+            "LANDINGPAGE_BACK_TO_MODELLIST" : "Zur Modelübersicht",
+
             "CONTACT_LEGEND_CUSTOMER_DATA": "Ihre Daten",
             "CONTACT_LEGEND_CATALOG": "Katalogversand",
             "CONTACT_LEGEND_TESTDRIVE": "Probefahrt",

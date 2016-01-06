@@ -1,26 +1,5 @@
 <div layout="column" ng-controller="ContactFormCtrl">
     <div>
-
-        <div layout="row" layout-align="center end">
-            <img class="car-contact" src="assets/style/img/vw-passat.jpg">
-        </div>
-
-        <div layout="row" layout-align="center">
-            <h3 class=".md-title">Golf</h3>
-        </div>
-
-        <div layout="row" layout-align="center">
-            <label>Erhältlich ab 30000 CHF</label>
-        </div>
-
-        <div layout="row" layout-align="center">
-            <md-button class="md-primary" ui-sref="/home" target="_blank" aria-label="modells">
-                <span translate="CONTACT_MODELS"></span>
-            </md-button>
-        </div>
-
-        <br/>
-
         <form name="userForm"  novalidate>
             <fieldset class="standard contact-fieldset">
                 <legend translate="CONTACT_LEGEND_CUSTOMER_DATA"></legend>
@@ -202,7 +181,7 @@
                 </div>
             </fieldset>
             <div layout="row">
-                <md-button type="button" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
+                <md-button type="button" ui-sref="landingPage" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
                            aria-label="Back"></md-button>
                 <md-button type="submit" class="md-raised md-primary" flex="50" translate="CONTACT_BUTTON_SUBMIT"
                            aria-label="Submit" ng-click="submit()"></md-button>
