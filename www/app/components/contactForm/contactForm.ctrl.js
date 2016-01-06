@@ -7,6 +7,9 @@
 
     app.controller('ContactFormCtrl', ['$rootScope', '$scope', '$translate', function ($rootScope, $scope, $translate) {
 
+        $scope.emailPattern = '^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$';
+
+
         $scope.salutations = [
             {
                 translation: 'CONTACT_SALUTATION_MR',
@@ -16,6 +19,8 @@
                 translation: 'CONTACT_SALUTATION_MRS',
                 value: 'MRS'
             }];
+
+        $scope.salutationIsValid = '';
 
         $scope.data = {};
         $scope.data.salutation = '';
@@ -51,19 +56,27 @@
         };
 
         var setErrorRadio = function (name) {
-            $('md-radio-button[name='+name+']').removeClass('md-primary');
-            $('md-radio-button[name='+name+']').addClass('error-radio');
-            $('md-radio-button[name='+name+']').addClass('error-text');
+            var query = 'md-radio-button[name=' + name + ']';
+            $(query).removeClass('md-primary');
+            $(query).addClass('error-radio');
+            $(query).addClass('error-text');
         };
 
         var setNormalRadio = function (name) {
-            $('md-radio-button[name='+name+']').removeClass('error-text');
-            $('md-radio-button[name='+name+']').removeClass('error-radio');
-            $('md-radio-button[name='+name+']').addClass('md-primary');
+            var query = 'md-radio-button[name=' + name + ']';
+            $(query).removeClass('error-text');
+            $(query).removeClass('error-radio');
+            $(query).addClass('md-primary');
         };
 
         $scope.validate = function () {
             var isValid = true;
+            if (!$scope.data.salutation || $scope.data.salutation == '') {
+                $scope.salutationIsValid = false;
+                $('#selectSalutation').addClass('error-input');
+                isValid = false;
+            }
+
             if (!$scope.data.catalog && !$scope.data.testdrive && !$scope.data.leasing) {
                 setErrorChkbox('checkbox-catalog');
                 setErrorChkbox('checkbox-testdrive');
@@ -89,91 +102,58 @@
             } else {
                 setNormalChkbox('checkbox-privacy');
             }
+
+            if (!$scope.data.firstName || $scope.data.firstName == '') {
+                isValid = false;
+            }
+
+            if (!$scope.data.lastName || $scope.data.lastName == '') {
+                isValid = false;
+            }
+
+            if (!$scope.data.street || $scope.data.street == '') {
+                isValid = false;
+            }
+
+            if (!$scope.data.streetNr || $scope.data.streetNr == '') {
+                isValid = false;
+            }
+
+            if (!$scope.data.zip || $scope.data.zip == '') {
+                isValid = false;
+            }
+
+            if (!$scope.data.city || $scope.data.city == '') {
+                isValid = false;
+            }
+
+            if (!$scope.data.telephone || $scope.data.telephone == '') {
+                isValid = false;
+            }
+
+            if (!$scope.data.email || $scope.data.email == '' || $scope.emailPattern.test($scope.data.email)) {
+                isValid = false;
+            }
+
             return isValid;
         };
 
-        var validateForm = function () {
-            console.log(!$scope.data.salutation || $scope.data.salutation == '');
-            console.log($scope.data.salutation);
-            if (!$scope.data.salutation || $scope.data.salutation == '') {
-                console.log("asd");
-                $('#salutation_error').removeClass('md-auto-hide');
-                return false;
-            }
-            /*
-             if (!$scope.data.firstName || $scope.data.firstName == '') {
-
-             }
-
-             if(!$scope.data.lastName || $scope.data.lastName == ''){
-             return false;
-             }
-
-             if(!$scope.data.street || $scope.data.street == ''){
-             return false;
-             }
-
-             if(!$scope.data.streetNr || $scope.data.streetNr == ''){
-             return false;
-             }
-
-             if(!$scope.data.zip || $scope.data.zip == ''){
-             return false;
-             }
-
-             if(!$scope.data.city || $scope.data.city == ''){
-             return false;
-             }
-
-             if(!$scope.data.telephone || $scope.data.telephone == ''){
-             return false;
-             }
-
-             var re = '/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i';
-             if(!$scope.data.email || $scope.data.email == '' || $scope.data.email.match(re)){
-             return false;
-             }*/
-
-            if ($scope.data.catalog) {
-                if (!$scope.data.catalogTyp && $scope.data.catalogTyp == '') {
-                    return false;
-                }
-            }
-
-            if ($scope.data.testdrive) {
-                if (!$scope.data.testdriveTyp || $scope.data.testdriveTyp == '') {
-                    return false;
-                }
-            }
-
-            if ($scope.data.leasing) {
-                if (!$scope.data.leasingTyp || $scope.data.leasingTyp == '') {
-                    return false;
-                }
-            }
-
-            if (!$scope.data.privacyAccepted) {
-                return false;
-            }
-
-            if (!$scope.data.newsletter) {
-                return false;
-            }
-
-            return true;
-        };
 
         $scope.submit = function () {
-            console.log("ASDASD");
-            if (validateForm()) {
+            if ($scope.validate()) {
                 console.log('valid');
                 console.log($scope.data);
+                return true;
             } else {
                 console.log('invalid');
+                return false;
             }
         };
 
+
+
         //<-- Event - Listeners -->
+
         $scope.$watch('data.privacyAccepted', function (newVal) {
             if (!newVal && newVal !== '') {
                 setErrorChkbox('checkbox-privacy');
@@ -183,10 +163,10 @@
         });
 
         $scope.$watch('data.catalog', function (newVal) {
-            if (!newVal) {
+            if (!newVal && newVal != '') {
                 $scope.data.catalogTyp = false;
             }
-            else{
+            else {
                 setNormalChkbox('checkbox-catalog');
                 setNormalChkbox('checkbox-testdrive');
                 setNormalChkbox('checkbox-leasing');
@@ -196,7 +176,7 @@
         $scope.$watch('data.testdrive', function (newVal) {
             if (!newVal) {
                 $scope.data.testdriveTyp = false;
-            }else{
+            } else {
                 setNormalChkbox('checkbox-catalog');
                 setNormalChkbox('checkbox-testdrive');
                 setNormalChkbox('checkbox-leasing');
@@ -206,7 +186,7 @@
         $scope.$watch('data.leasing', function (newVal) {
             if (!newVal) {
                 $scope.data.leasingTyp = false;
-            }else{
+            } else {
                 setNormalChkbox('checkbox-catalog');
                 setNormalChkbox('checkbox-testdrive');
                 setNormalChkbox('checkbox-leasing');
@@ -216,31 +196,39 @@
         $scope.$watch('data.catalogTyp', function (newVal) {
             if (newVal || $scope.data.catalog) {
                 setNormalRadio('radio-catalog')
-            }else{
-                setErrorRadio('radio-catalog');
-            }
-        });
-        $scope.$watch('data.testdriveTyp', function (newVal) {
-            if (newVal) {
-                setNormalRadio('radio-testdrive')
-            }else{
-                setErrorRadio('radio-testdrive');
-            }
-        });
-        $scope.$watch('data.leasingTyp', function (newVal) {
-            if (newVal) {
-                setNormalRadio('radio-leasing')
-            }else{
-                setErrorRadio('radio-leasing');
             }
         });
 
-        //WORKAROUND of Select bug with placeholder translation
+        $scope.$watch('data.testdriveTyp', function (newVal) {
+            if (newVal || $scope.data.catalog) {
+                setNormalRadio('radio-testdrive')
+            }
+        });
+        $scope.$watch('data.leasingTyp', function (newVal) {
+            if (newVal || $scope.data.catalog) {
+                setNormalRadio('radio-leasing')
+            }
+        });
+
+        //WORKAROUNDS of Select bug with placeholder translation and Errorhandling
         $rootScope.$on('$translateChangeEnd', function () {
             $translate('CONTACT_SALUTATION').then(function (trans) {
                 $('#selectSalutation').find('md-select-value').find('span').first().text(trans);
             });
         });
+
+        $('#selectSalutation').mouseup(function () {
+            if ($scope.data.salutation != $scope.salutations[0].value && $scope.data.salutation != $scope.salutations[1].value) {
+                $scope.salutationIsValid = false;
+                $('#selectSalutation').addClass('error-input');
+            }
+        });
+
+        $scope.salutationSelect = function () {
+            $scope.salutationIsValid = true;
+            $('#selectSalutation').removeClass('error-input');
+        };
+
 
     }]);
 

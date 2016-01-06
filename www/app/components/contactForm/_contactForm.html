@@ -21,22 +21,20 @@
 
         <br/>
 
-        <form name="userForm" onsubmit="submit()" novalidate>
+        <form name="userForm"  novalidate>
             <fieldset class="standard contact-fieldset">
                 <legend translate="CONTACT_LEGEND_CUSTOMER_DATA"></legend>
 
                 <div layout-gt-sm="row">
                     <md-input-container>
                         <label translate="CONTACT_SALUTATION"></label>
-                        <md-select name="salutation" ng-model="data.salutation" id="selectSalutation" required>
-                            <md-option ng-repeat="salutation in salutations" value="{{salutation.value}}">
+                        <md-select id="selectSalutation" name="salutation" ng-model="data.salutation"  required>
+                            <md-option id="selectSalutationOption" ng-click="salutationSelect()" ng-repeat="salutation in salutations" value="{{salutation.value}}">
                                 {{salutation.translation | translate}}
                             </md-option>
                         </md-select>
-                        <div ng-messages="data.salutation" role="alert" id="salutation_error">
-                            <div ng-message="required" ng-hide="data.salutation">
-                                <span translate="CONTACT_ERROR_SALUTATION"></span>
-                            </div>
+                        <div id="salutation-error" class="error-select" ng-show="salutationIsValid === false" >
+                            <span translate="CONTACT_ERROR_SALUTATION"></span>
                         </div>
                     </md-input-container>
                 </div>
@@ -74,7 +72,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-xs-sm>
                         <label translate="CONTACT_STREET_NR"></label>
-                        <input type="number" ng-model="data.streetNr" required>
+                        <input type="text" ng-model="data.streetNr" required>
                         <div ng-messages="data.streetNr" role="alert">
                             <div ng-message="required" ng-hide="data.streetNr">
                                 <span translate="CONTACT_ERROR_STREET_NR"></span>
@@ -116,7 +114,7 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label translate="CONTACT_EMAIL"></label>
-                        <input type="text" ng-model="data.email" required>
+                        <input type="text" ng-model="data.email" pattern="{{emailPattern}}" required>
                         <div ng-messages="data.email" role="alert">
                             <div ng-message="required" ng-hide="data.email">
                                 <span translate="CONTACT_ERROR_EMAIL"></span>
@@ -157,9 +155,9 @@
                     </div>
                     <div flex-gt-xs="50" flex-xs="40">
                         <md-radio-group ng-model="data.testdriveTyp">
-                            <md-radio-button id="radio-testdrive" ng-disabled="!data.testdrive" value="email" class="md-primary"><span
+                            <md-radio-button name="radio-testdrive" ng-disabled="!data.testdrive" value="email" class="md-primary"><span
                                     translate="CONTACT_TESTDRIVE_EMAIL"> </span></md-radio-button>
-                            <md-radio-button id="radio-testdrive" ng-disabled="!data.testdrive" value="telephone" class="md-primary"><span
+                            <md-radio-button name="radio-testdrive" ng-disabled="!data.testdrive" value="telephone" class="md-primary"><span
                                     translate="CONTACT_TESTDRIVE_TELEFON"> </span></md-radio-button>
                         </md-radio-group>
                     </div>
@@ -176,9 +174,9 @@
                     </div>
                     <div flex-gt-xs="50" flex-xs="40">
                         <md-radio-group ng-model="data.leasingTyp">
-                            <md-radio-button id="radio-leasing" value="email" class="md-primary" ng-disabled="!data.leasing"><span
+                            <md-radio-button name="radio-leasing" value="email" class="md-primary" ng-disabled="!data.leasing"><span
                                     translate="CONTACT_LEASING_EMAIL"> </span></md-radio-button>
-                            <md-radio-button id="radio-leasing" value="telephone" class="md-primary" ng-disabled="!data.leasing"><span
+                            <md-radio-button name="radio-leasing" value="telephone" class="md-primary" ng-disabled="!data.leasing"><span
                                     translate="CONTACT_LEASING_TELEPHONE"> </span></md-radio-button>
                         </md-radio-group>
                     </div>
@@ -207,7 +205,7 @@
                 <md-button type="button" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
                            aria-label="Back"></md-button>
                 <md-button type="submit" class="md-raised md-primary" flex="50" translate="CONTACT_BUTTON_SUBMIT"
-                           aria-label="Submit" ng-click="validate()"></md-button>
+                           aria-label="Submit" ng-click="submit()"></md-button>
             </div>
         </form>
     </div>

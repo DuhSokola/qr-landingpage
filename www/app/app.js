@@ -54,7 +54,7 @@
             "CONTACT_ERROR_ZIP": "PLZ pflicht",
             "CONTACT_ERROR_CITY": "Ort pflicht",
             "CONTACT_ERROR_TELEPHONE": "Telefon pflicht",
-            "CONTACT_ERROR_EMAIL": "Email pflicht",
+            "CONTACT_ERROR_EMAIL": "Geben Sie valide Email ein",
             "CONTACT_ERROR_CATALOG": "Katalog pflicht",
             "CONTACT_ERROR_TESTDRIVE": "Probefahrt pflicht",
             "CONTACT_ERROR_LEASING": "Leasing pflicht",
