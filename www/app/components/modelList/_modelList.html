@@ -1,10 +1,11 @@
+<h3>Wählen Sie das gewünschte Model aus:</h3>
 <div layout="column" ng-controller="ModelListCtrl">
     <div>
-        <md-list-item class="md-3-line" ng-repeat="car in global.cars.models" >
+        <md-list-item class="md-3-line" ng-repeat="car in global.cars.models" ng-click="route(car.id)">
             <div class="md-list-item-text">
-                <h3>{{car.name}}</h3>
+                <span style="font-weight: bold; font-size: 18px;">{{car.name}}</span>
             </div>
-            <md-button class="md-secondary">Respond</md-button>
+            <md-icon md-svg-src="/assets/style/svg/arrow_forward.svg" aria-label="android "></md-icon>
             <md-divider ng-if="!$last"></md-divider>
         </md-list-item>
     </div>

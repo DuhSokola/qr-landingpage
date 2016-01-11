@@ -13,8 +13,8 @@
 
         $rootScope.global.params.mode = $stateParams.mode;
 
-        $scope.emailPattern = '^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$';
 
+        $scope.emailPattern = '^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$';
 
         $scope.salutations = [
             {
@@ -38,15 +38,17 @@
             city: '',
             telephone: '',
             email: '',
-            catalog: '',
-            catalogTyp: '',
-            testdrive: '',
+            catalog: $stateParams.mode == 'catalog',
+            catalogTyp: ($stateParams.mode == 'catalog')? 'electronic':'',
+            testdrive: $stateParams.mode == 'testdrive',
             testdriveTyp: '',
             leasing: '',
             leasingTyp: '',
             privacyAccepted: '',
             newsletter: true
         };
+        
+        console.log($scope.data);
 
         var setErrorChkbox = function (id) {
             id = '#' + id;
@@ -145,7 +147,6 @@
             return isValid;
         };
 
-
         $scope.submit = function () {
             if ($scope.validate()) {
                 console.log('valid');
@@ -156,7 +157,6 @@
                 return false;
             }
         };
-
 
         //<-- Event - Listeners -->
 

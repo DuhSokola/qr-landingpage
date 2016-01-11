@@ -1,7 +1,7 @@
 <div layout="column" ng-controller="ImageAreaCtrl">
     <div>
         <div layout="row" layout-align="center end">
-            <img class="car-contact" ng-cloak="true" src="{{(carsApi+global.params.selectedVariant.picturePaths[0])}}">
+            <img class="car-contact" src="{{carsApi+global.params.selectedVariant.picturePaths[0]}}">
         </div>
 
         <div layout="row" layout-align="center">
@@ -9,7 +9,7 @@
         </div>
 
         <div layout="row" layout-align="center">
-            <label>Erhältlich ab {{global.params.selectedVariant.versionList[0].price}} CHF</label>
+            <label>Erhältlich ab {{global.params.selectedVariant.versionList[0].price | currency : "" : 0}} CHF</label>
         </div>
 
         <div layout="row" layout-align="center">

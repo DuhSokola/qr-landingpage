@@ -6,7 +6,8 @@
         'app.carResource',
         'pascalprecht.translate',
         'ngMaterial',
-        'ngProgress'
+        'ngProgress',
+        'ngCookies'
     ];
 
     var app = angular.module('app', deps);
@@ -40,7 +41,7 @@
             "CONTACT_LEGEND_LEASING": "Leasing",
             "CONTACT_LEGEND_NEWSLETTER": "Newsletter",
             "CONTACT_LEGEND_PRIVACY": "Datenschutzbestimmung",
-            "CONTACT_MODELS": "Weitere Modelle",
+            "CONTACT_MODELS": "Weitere Varianten",
             "CONTACT_SALUTATION_MR": "Herr",
             "CONTACT_SALUTATION_MRS": "Frau",
             "CONTACT_SALUTATION": "Anrede",
@@ -108,7 +109,7 @@
             "CONTACT_BUTTON": "[FR]Senden"
         });
 
-        $translateProvider.preferredLanguage('DE');
+        $translateProvider.preferredLanguage('de');
     });
 
     app.run(function ($rootScope) {
@@ -149,6 +150,7 @@
                                 CarDataReader.loadCarDataByModel(newVal);
                             }
                         });
+
                     },
                     function (error) {
                         console.log('ERROR');
@@ -157,6 +159,9 @@
                     });
             }
         })
+        $rootScope.$watch('$stateChangeSuccess', function (newVal) {
+
+        });
 
 
     }]);

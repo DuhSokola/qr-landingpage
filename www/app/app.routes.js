@@ -8,7 +8,8 @@
         'app.contactForm',
         'app.landingPageForm',
         'app.leasingCalculatorForm',
-        'app.modelList'
+        'app.modelList',
+        'app.variantList'
     ];
 
     var app = angular.module('app.routes', deps);
@@ -18,16 +19,30 @@
 
         $stateProvider
             .state('modelList', {
-                url: '/modelList',
+                url: '/modelList/:brand',
                 views: {
                     '': {
-                        templateUrl: 'app/sites/selectModel.html'
+                        templateUrl: 'app/sites/modelList.html'
                     },
                     'language@modelList': {
                         templateUrl: 'app/components/languageSwitch/_languageSwitch.html'
                     },
                     'modelList@modelList': {
                         templateUrl: 'app/components/modelList/_modelList.html'
+                    }
+                }
+            })
+            .state('variantList', {
+                url: '/variantList/:brand',
+                views: {
+                    '': {
+                        templateUrl: 'app/sites/variantList.html'
+                    },
+                    'language@variantList': {
+                        templateUrl: 'app/components/languageSwitch/_languageSwitch.html'
+                    },
+                    'variantList@variantList': {
+                        templateUrl: 'app/components/variantList/_variantList.html'
                     }
                 }
             })
