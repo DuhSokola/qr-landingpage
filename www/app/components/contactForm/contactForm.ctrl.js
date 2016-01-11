@@ -3,50 +3,15 @@
 
     var dependencies = [
         'app.carResource',
-        'app.leadResource'
+        'app.leadResource',
+        'blockUI'
     ];
 
     var app = angular.module('app.contactForm.ctrl', dependencies);
 
-    app.controller('ContactFormCtrl', ['$rootScope', '$scope', '$translate', '$stateParams', 'CarResource', 'LeadResource', function ($rootScope, $scope, $translate, $stateParams, CarResource, LeadResource) {
+    app.controller('ContactFormCtrl', ['$rootScope', '$scope', '$translate', '$stateParams', 'LeadResource', function ($rootScope, $scope, $translate, $stateParams,LeadResource) {
 
-        /*CarResource.getByBrand('vw', function (data) {
-                console.log(data);
-            },
-            function (err) {
-                console.log(err);
-            });*/
-
-        /*var test = {
-            salutation: 'Mr',
-            firstName: 'ALex',
-            lastName: 'Backs',
-            street: 'Strasse',
-            streetNr: '23',
-            zip: '1234',
-            city: 'Mark',
-            telephone: '089 3333333',
-            email: 'EMail',
-            catalog: true,
-            catalogTyp: 'electronic',
-            testdrive: true,
-            privacyAccepted: true,
-            newsletter: true
-    }
-        LeadResource.persist(test,function(data){
-            console.log('OK');
-            console.log(data);
-        },
-        function(data){
-            console.log('NOK');
-            console.log(data);
-        });*/
-
-        $rootScope.global.params = {
-            brand: $stateParams.brand,
-            model: $stateParams.model,
-            mode: $stateParams.mode
-        };
+        $rootScope.global.params.mode = $stateParams.mode;
 
         $scope.emailPattern = '^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$';
 
@@ -82,24 +47,6 @@
             privacyAccepted: '',
             newsletter: true
         };
-        /*
-        $scope.data.salutation = '';
-        $scope.data.firstName = '';
-        $scope.data.lastName = '';
-        $scope.data.street = '';
-        $scope.data.streetNr = '';
-        $scope.data.zip = '';
-        $scope.data.city = '';
-        $scope.data.telephone = '';
-        $scope.data.email = '';
-        $scope.data.catalog = '';
-        $scope.data.catalogTyp = '';
-        $scope.data.testdrive = '';
-        $scope.data.testdriveTyp = '';
-        $scope.data.leasing = '';
-        $scope.data.leasingTyp = '';
-        $scope.data.privacyAccepted = '';
-        $scope.data.newsletter = true;*/
 
         var setErrorChkbox = function (id) {
             id = '#' + id;

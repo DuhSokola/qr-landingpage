@@ -6,11 +6,7 @@
     var app = angular.module('app.leasingCalculatorForm.ctrl', dependencies);
 
     app.controller('LeasingCalculatorFormCtrl', ['$rootScope', '$scope','$stateParams', function ($rootScope, $scope, $stateParams) {
-        console.log($stateParams);
-        $rootScope.global.params = {
-            brand : $stateParams.brand,
-            model : $stateParams.model
-        };
+
 
         $scope.data = {};
         $scope.data.payment = 0;

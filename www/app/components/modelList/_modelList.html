@@ -1,0 +1,11 @@
+<div layout="column" ng-controller="ModelListCtrl">
+    <div>
+        <md-list-item class="md-3-line" ng-repeat="car in global.cars.models" >
+            <div class="md-list-item-text">
+                <h3>{{car.name}}</h3>
+            </div>
+            <md-button class="md-secondary">Respond</md-button>
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+    </div>
+</div>

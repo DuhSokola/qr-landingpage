@@ -129,27 +129,36 @@
     });
 
 
-    app.controller('mainCtrl', ['$scope', '$rootScope', 'CarResource', 'ngProgressFactory', function ($scope, $rootScope, CarResource, ngProgressFactory) {
+    app.controller('mainCtrl', ['$scope', '$rootScope', 'CarResource', 'ngProgressFactory', 'blockUI', 'CarDataReader', function ($scope, $rootScope, CarResource, ngProgressFactory, blockUI, CarDataReader) {
         $rootScope.$watch('global.params.brand', function () {
             if ($rootScope.global.params.brand) {
                 $scope.progressbar = ngProgressFactory.createInstance();
                 $scope.progressbar.start();
+                blockUI.start();
                 CarResource.getByBrand($rootScope.global.params.brand, function (response) {
                         $rootScope.global.cars = {
                             brand: response.brand,
                             models: response.models
                         };
-                        $scope.progressbar.complete();
                         console.log($rootScope.global.cars);
-                        $scope.progressbar.stop();
+                        CarDataReader.loadCarDataByModel($rootScope.global.params.model);
+                        $scope.progressbar.complete();
+                        blockUI.stop();
+                        $rootScope.$watch('global.params.model', function (newVal) {
+                            if ($rootScope.global.params.model) {
+                                CarDataReader.loadCarDataByModel(newVal);
+                            }
+                        });
                     },
                     function (error) {
                         console.log('ERROR');
-                        console.log($rootScope.carsApi);
                         $scope.progressbar.complete();
+                        blockUI.stop();
                     });
             }
         })
+
+
     }]);
 
 }());

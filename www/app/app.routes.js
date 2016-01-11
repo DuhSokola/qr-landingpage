@@ -7,7 +7,8 @@
         'app.languageSwitch',
         'app.contactForm',
         'app.landingPageForm',
-        'app.leasingCalculatorForm'
+        'app.leasingCalculatorForm',
+        'app.modelList'
     ];
 
     var app = angular.module('app.routes', deps);
@@ -16,6 +17,20 @@
         $urlRouterProvider.otherwise('/landingPage/vw/golf');
 
         $stateProvider
+            .state('modelList', {
+                url: '/modelList',
+                views: {
+                    '': {
+                        templateUrl: 'app/sites/selectModel.html'
+                    },
+                    'language@modelList': {
+                        templateUrl: 'app/components/languageSwitch/_languageSwitch.html'
+                    },
+                    'modelList@modelList': {
+                        templateUrl: 'app/components/modelList/_modelList.html'
+                    }
+                }
+            })
             .state('landingPage', {
                 url: '/landingPage/:brand/:model',
                 views: {

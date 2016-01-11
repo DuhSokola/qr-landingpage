@@ -1,19 +1,19 @@
 <div layout="column" ng-controller="ImageAreaCtrl">
     <div>
         <div layout="row" layout-align="center end">
-            <img class="car-contact" src="assets/style/img/vw-passat.jpg">
+            <img class="car-contact" ng-cloak="true" src="{{(carsApi+global.params.selectedVariant.picturePaths[0])}}">
         </div>
 
         <div layout="row" layout-align="center">
-            <h3 class=".md-title">Golf</h3>
+            <h3 class=".md-title">{{global.params.selectedVariant.name}}</h3>
         </div>
 
         <div layout="row" layout-align="center">
-            <label>Erhältlich ab 30'000 CHF</label>
+            <label>Erhältlich ab {{global.params.selectedVariant.versionList[0].price}} CHF</label>
         </div>
 
         <div layout="row" layout-align="center">
-            <md-button class="md-primary" ng-click="route()" target="_blank" aria-label="modells">
+            <md-button class="md-primary" ng-click="route()" target="_blank" aria-label="models">
                 <span translate="CONTACT_MODELS"></span>
             </md-button>
         </div>

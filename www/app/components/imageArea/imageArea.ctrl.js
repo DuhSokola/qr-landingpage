@@ -1,14 +1,18 @@
 ;(function () {
     'use strict';
 
-    var dependencies = [];
+    var dependencies = [
+        'app.carDataReader'
+    ];
 
     var app = angular.module('app.imageArea.ctrl', dependencies);
 
-    app.controller('ImageAreaCtrl', ['$scope','$state',function ($scope,$state) {
+    app.controller('ImageAreaCtrl', ['$rootScope','$scope','$state', function ($rootScope, $scope,$state) {
+
         $scope.route = function(){
             $state.go('carVariants');
         };
+
     }]);
 
 }());
