@@ -43,12 +43,12 @@
         <div layout="row">
             <div flex="50">
                 <span><b>Zinssatz:</b></span><br />
-                <span>Nominal: 3.90%</span><br />
-                <span>Effektiv: 3.97%</span>
+                <span>Nominal: {{data.interestRateDefault}}%</span><br />
+                <span>Effektiv: {{data.interestRateEffektive}}%</span>
             </div>
             <div flex="50">
-                <span style="font-weight: bold">Monatliche Rate</span><br>
-                <span style="font-weight: bold; font-size: 35px; color:green">CHF {{result}}</span>
+                <span style="font-weight: bold" translate="LEASINGCALC_MOTHLY_PAYMENT">Monatliche Rate</span><br>
+                <span style="font-weight: bold; font-size: 35px; color:green" >{{'LEASINGCALC_CHF' | translate}}&nbsp;{{result}}</span>
             </div>
         </div>
 

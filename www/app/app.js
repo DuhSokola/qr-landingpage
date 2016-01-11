@@ -29,6 +29,8 @@
             "LEASINGCALC_CALCULATE": "Berechnen",
             "LEASINGCALC_CONTACT": "Kontaktanfrage",
             "LEASINGCALC_BUTTON_BACK": "Zurück",
+            "LEASINGCALC_MOTHLY_PAYMENT": "Monatliche Rate:",
+            "LEASINGCALC_CHF": "CHF",
 
             "LANDINGPAGE_LEASING": "Leasing berechnen",
             "LANDINGPAGE_TESTDRIVE": "Probefahrt",
@@ -109,7 +111,7 @@
             "CONTACT_BUTTON": "[FR]Senden"
         });
 
-        $translateProvider.preferredLanguage('de');
+        $translateProvider.preferredLanguage('DE');
     });
 
     app.run(function ($rootScope) {
@@ -125,7 +127,6 @@
         $rootScope.global.campaign = 'autosalon_2016_ipad';
         $rootScope.global.data = {};
         $rootScope.global.params = {};
-
     });
 
 
@@ -138,8 +139,6 @@
                 CarResource.getByBrand($rootScope.global.params.selectedBrand, function (response) {
                         $rootScope.global.params.allModels = response.models;
                         CarDataReader.loadCarDataByModel($rootScope.global.params.selectedModel, $rootScope.global.params.allModels);
-
-                        console.log($rootScope.global.params);
                         $scope.progressbar.complete();
                         blockUI.stop();
                     },
@@ -150,8 +149,6 @@
                     });
             }
         }, true);
-
-
 
         $rootScope.$watch('global.params.selectedModel', function () {
             if ($rootScope.global.params.allModels) {

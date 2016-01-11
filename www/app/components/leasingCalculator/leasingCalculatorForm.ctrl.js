@@ -18,13 +18,16 @@
         $scope.data.payment = 0;
         $scope.data.duration = 12;
         $scope.data.milage = 10000;
-        $scope.data.interestRate = '3.97';
+        $scope.data.interestRateDefault = '5.40';
+        $scope.data.interestRateEffektive = parseFloat($scope.data.interestRateDefault) + 0.05;
+        $scope.data.discount = false;
+        $scope.data.discountRate = '3.90';
         $scope.result=500;
 
         $scope.calculate = function(){
             LeasingDataResource.getLeasingCalculation({
-                carCode: '',
-                interestRate: $scope.data.interestRate,
+                carCode: $rootScope.global.params.selectedVariant.versionList[0].id,
+                interestRate: $scope.data.discount ? $scope.data.discountRate : $scope.data.interestRateDefault,
                 specialPayment: $scope.data.payment,
                 totalAmount: $scope.data.basePrice + $scope.data.payment,
                 month: $scope.data.duration,
@@ -34,6 +37,7 @@
                 $scope.result=result;
             }, function(){
                 console.log('err');
+                $scope.result=2000;
             });
         }
 
