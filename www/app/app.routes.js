@@ -13,16 +13,16 @@
     var app = angular.module('app.routes', deps);
 
     app.config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/landingPage');
+        $urlRouterProvider.otherwise('/landingPage/vw/golf');
 
         $stateProvider
             .state('landingPage', {
-                url: '/landingPage',
+                url: '/landingPage/:brand/:model',
                 views: {
-                    '':{
+                    '': {
                         templateUrl: 'app/sites/landingPage.html'
                     },
-                    'language@landingPage':{
+                    'language@landingPage': {
                         templateUrl: 'app/components/languageSwitch/_languageSwitch.html'
                     },
                     'imageArea@landingPage': {
@@ -34,12 +34,12 @@
                 }
             })
             .state('leasingCalculator', {
-                url: '/leasingCalculator',
+                url: '/leasingCalculator/:brand/:model',
                 views: {
-                    '':{
+                    '': {
                         templateUrl: 'app/sites/leasingCalculator.html'
                     },
-                    'language@leasingCalculator':{
+                    'language@leasingCalculator': {
                         templateUrl: 'app/components/languageSwitch/_languageSwitch.html'
                     },
                     'imageArea@leasingCalculator': {
@@ -50,40 +50,24 @@
                     }
                 }
             })
-            .state('testdrive', {
-                url: '/testdrive',
+            .state('mainFormular', {
+                url: '/mainFormular/:brand/:model/:mode',
                 views: {
-                    '':{
-                        templateUrl: 'app/sites/testdrive.html'
+                    '': {
+                        templateUrl: 'app/sites/mainFormular.html'
                     },
-                    'language@testdrive':{
+                    'language@mainFormular': {
                         templateUrl: 'app/components/languageSwitch/_languageSwitch.html'
                     },
-                    'imageArea@testdrive': {
+                    'imageArea@mainFormular': {
                         templateUrl: 'app/components/imageArea/_imageArea.html'
                     },
-                    'contactForm@testdrive': {
+                    'contactForm@mainFormular': {
                         templateUrl: 'app/components/contactForm/_contactForm.html'
                     }
                 }
             })
-            .state('catalog', {
-                url: '/catalog',
-                views: {
-                    '':{
-                        templateUrl: 'app/sites/catalog.html'
-                    },
-                    'language@catalog':{
-                        templateUrl: 'app/components/languageSwitch/_languageSwitch.html'
-                    },
-                    'imageArea@catalog': {
-                        templateUrl: 'app/components/imageArea/_imageArea.html'
-                    },
-                    'contactForm@catalog': {
-                        templateUrl: 'app/components/contactForm/_contactForm.html'
-                    }
-                }
-            })
+
     });
 
 }());

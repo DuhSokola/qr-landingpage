@@ -40,17 +40,43 @@ md-radio-button.error-radio .md-off {
     border-color: rgb(221, 44, 0);
 }
 
+
+@media screen and (max-width: 368px) {
+    .car-contact {
+        height: auto;
+        width: 100%;
+    }
+    md-checkbox.checkbox-inline .md-icon {
+        margin-top: -35px;
+    }
+    md-checkbox.checkbox-inline .md-ripple-container {
+        margin-top: -35px;
+    }
+}
+
+@media screen and  (min-width: 369px) and (max-width: 700px)  {
+    .car-contact {
+        height: auto;
+        width: 100%;
+    }
+    md-checkbox.checkbox-inline .md-icon {
+        margin-top: -25px;
+    }
+    md-checkbox.checkbox-inline .md-ripple-container {
+        margin-top: -25px;
+    }
+}
+
 @media screen and (min-width: 701px) {
     .car-contact {
         height: auto;
         width: 500px;
     }
-
-}
-
-@media screen and (max-width: 700px) {
-    .car-contact {
-        height: auto;
-        width: 100%;
+    md-checkbox.checkbox-inline .md-icon {
+        margin-top: -25px;
+    }
+    md-checkbox.checkbox-inline .md-ripple-container {
+        margin-top: -25px;
     }
 }
+

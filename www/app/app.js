@@ -3,8 +3,10 @@
 
     var deps = [
         'app.routes',
+        'app.carResource',
         'pascalprecht.translate',
-        'ngMaterial'
+        'ngMaterial',
+        'ngProgress'
     ];
 
     var app = angular.module('app', deps);
@@ -18,11 +20,19 @@
             "LEASINGCALC_PAYMENT": "Sonderzahlung:",
             "LEASINGCALC_DURATION": "Laufzeit:",
             "LEASINGCALC_MILAGE": "Jährliche Laufleistung:",
+            "LEASINGCALC_PAYMENT_FRANCS": "CHF",
+            "LEASINGCALC_DURATION_MONTH": "Monate",
+            "LEASINGCALC_MILAGE_KILOMETER": "Km",
+            "LEASINGCALC_OFFER": "Aktuelle Leasingangebote",
+            "LEASINGCALC_OFFER_TEXT": "<b>Leasingaktion Generell 3.9%</b> <br /> Gültig bis: <b>29. Februar 2016</b> <br />Laufzeit: <b>12 - 48 Monate</b> <br /> Jährliche Laufleistung: <b>bis 250000 km</b>",
+            "LEASINGCALC_CALCULATE": "Berechnen",
+            "LEASINGCALC_CONTACT": "Kontaktanfrage",
+            "LEASINGCALC_BUTTON_BACK": "Zurück",
 
-            "LANDINGPAGE_LEASING" : "Leasing berechnen",
-            "LANDINGPAGE_TESTDRIVE" : "Probefahrt",
-            "LANDINGPAGE_CATALOG" : "Katalog",
-            "LANDINGPAGE_BACK_TO_MODELLIST" : "Zur Modelübersicht",
+            "LANDINGPAGE_LEASING": "Leasing berechnen",
+            "LANDINGPAGE_TESTDRIVE": "Probefahrt",
+            "LANDINGPAGE_CATALOG": "Katalog",
+            "LANDINGPAGE_BACK_TO_MODELLIST": "Zur Modelübersicht",
 
             "CONTACT_LEGEND_CUSTOMER_DATA": "Ihre Daten",
             "CONTACT_LEGEND_CATALOG": "Katalogversand",
@@ -102,16 +112,44 @@
     });
 
     app.run(function ($rootScope) {
+        $rootScope.cssFileName = 'main';
+
+        $rootScope.carsApi = 'http://s1100pws428.amag.car.web:8080/readAllModelVariants';
+
+        //TODO
+        $rootScope.backendApi = '';
+
         $rootScope.global = {};
         $rootScope.global.languages = ['DE', 'FR', 'IT', 'EN'];
-
+        $rootScope.global.campaign = 'autosalon_2016_ipad';
+        $rootScope.global.cars = {};
         $rootScope.global.data = {};
+        $rootScope.global.params = {};
+
     });
 
 
-    app.controller('testCtrl',['$scope', function ($scope) {
-        $scope.projectForm = {};
-        $scope.projectForm.clientEmail;
+    app.controller('mainCtrl', ['$scope', '$rootScope', 'CarResource', 'ngProgressFactory', function ($scope, $rootScope, CarResource, ngProgressFactory) {
+        $rootScope.$watch('global.params.brand', function () {
+            if ($rootScope.global.params.brand) {
+                $scope.progressbar = ngProgressFactory.createInstance();
+                $scope.progressbar.start();
+                CarResource.getByBrand($rootScope.global.params.brand, function (response) {
+                        $rootScope.global.cars = {
+                            brand: response.brand,
+                            models: response.models
+                        };
+                        $scope.progressbar.complete();
+                        console.log($rootScope.global.cars);
+                        $scope.progressbar.stop();
+                    },
+                    function (error) {
+                        console.log('ERROR');
+                        console.log($rootScope.carsApi);
+                        $scope.progressbar.complete();
+                    });
+            }
+        })
     }]);
 
 }());

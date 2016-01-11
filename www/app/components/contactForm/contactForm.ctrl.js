@@ -1,11 +1,52 @@
 ;(function () {
     'use strict';
 
-    var dependencies = [];
+    var dependencies = [
+        'app.carResource',
+        'app.leadResource'
+    ];
 
     var app = angular.module('app.contactForm.ctrl', dependencies);
 
-    app.controller('ContactFormCtrl', ['$rootScope', '$scope', '$translate', function ($rootScope, $scope, $translate) {
+    app.controller('ContactFormCtrl', ['$rootScope', '$scope', '$translate', '$stateParams', 'CarResource', 'LeadResource', function ($rootScope, $scope, $translate, $stateParams, CarResource, LeadResource) {
+
+        /*CarResource.getByBrand('vw', function (data) {
+                console.log(data);
+            },
+            function (err) {
+                console.log(err);
+            });*/
+
+        /*var test = {
+            salutation: 'Mr',
+            firstName: 'ALex',
+            lastName: 'Backs',
+            street: 'Strasse',
+            streetNr: '23',
+            zip: '1234',
+            city: 'Mark',
+            telephone: '089 3333333',
+            email: 'EMail',
+            catalog: true,
+            catalogTyp: 'electronic',
+            testdrive: true,
+            privacyAccepted: true,
+            newsletter: true
+    }
+        LeadResource.persist(test,function(data){
+            console.log('OK');
+            console.log(data);
+        },
+        function(data){
+            console.log('NOK');
+            console.log(data);
+        });*/
+
+        $rootScope.global.params = {
+            brand: $stateParams.brand,
+            model: $stateParams.model,
+            mode: $stateParams.mode
+        };
 
         $scope.emailPattern = '^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$';
 
@@ -22,7 +63,26 @@
 
         $scope.salutationIsValid = '';
 
-        $scope.data = {};
+        $scope.data = {
+            salutation: '',
+            firstName: '',
+            lastName: '',
+            street: '',
+            streetNr: '',
+            zip: '',
+            city: '',
+            telephone: '',
+            email: '',
+            catalog: '',
+            catalogTyp: '',
+            testdrive: '',
+            testdriveTyp: '',
+            leasing: '',
+            leasingTyp: '',
+            privacyAccepted: '',
+            newsletter: true
+        };
+        /*
         $scope.data.salutation = '';
         $scope.data.firstName = '';
         $scope.data.lastName = '';
@@ -39,7 +99,7 @@
         $scope.data.leasing = '';
         $scope.data.leasingTyp = '';
         $scope.data.privacyAccepted = '';
-        $scope.data.newsletter = true;
+        $scope.data.newsletter = true;*/
 
         var setErrorChkbox = function (id) {
             id = '#' + id;
@@ -149,7 +209,6 @@
                 return false;
             }
         };
-
 
 
         //<-- Event - Listeners -->

@@ -127,23 +127,24 @@
             <fieldset class="standard contact-fieldset">
                 <legend translate="CONTACT_LEGEND_TESTDRIVE"></legend>
                 <div layout="column" layout-wrap layout-xs="row" layout-gt-xs="row">
-                    <div flex-gt-xs="50" flex-xs="60">
+                    <!--<div flex-gt-xs="50" flex-xs="60">-->
+                    <div flex="100">
                         <md-checkbox id="checkbox-testdrive" ng-model="data.testdrive" aria-label="Checkbox 1" class="md-primary">
                             <span translate="CONTACT_TESTDRIVE"></span>
                         </md-checkbox>
                     </div>
-                    <div flex-gt-xs="50" flex-xs="40">
+                    <!--<div flex-gt-xs="50" flex-xs="40">
                         <md-radio-group ng-model="data.testdriveTyp">
                             <md-radio-button name="radio-testdrive" ng-disabled="!data.testdrive" value="email" class="md-primary"><span
                                     translate="CONTACT_TESTDRIVE_EMAIL"> </span></md-radio-button>
                             <md-radio-button name="radio-testdrive" ng-disabled="!data.testdrive" value="telephone" class="md-primary"><span
                                     translate="CONTACT_TESTDRIVE_TELEFON"> </span></md-radio-button>
                         </md-radio-group>
-                    </div>
+                    </div>-->
                 </div>
             </fieldset>
 
-            <fieldset class="standard contact-fieldset">
+            <!--<fieldset class="standard contact-fieldset">
                 <legend translate="CONTACT_LEGEND_LEASING"></legend>
                 <div layout="column" layout-wrap layout-xs="row" layout-gt-xs="row">
                     <div flex-gt-xs="50" flex-xs="60">
@@ -160,7 +161,7 @@
                         </md-radio-group>
                     </div>
                 </div>
-            </fieldset>
+            </fieldset>-->
             <fieldset class="standard contact-fieldset">
                 <legend translate="CONTACT_LEGEND_NEWSLETTER"></legend>
                 <div flex-gt-xs flex="100">
@@ -181,8 +182,10 @@
                 </div>
             </fieldset>
             <div layout="row">
-                <md-button type="button" ui-sref="landingPage" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
-                           aria-label="Back"></md-button>
+                <md-button type="button" href="#/leasingCalculator/{{global.params.brand}}/{{global.params.model}}" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
+                           aria-label="Back" ng-if="global.params.mode == 'leasing'"></md-button>
+                <md-button type="button" href="#/landingPage/{{global.params.brand}}/{{global.params.model}}" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
+                           aria-label="Back" ng-if="global.params.mode != 'leasing'"></md-button>
                 <md-button type="submit" class="md-raised md-primary" flex="50" translate="CONTACT_BUTTON_SUBMIT"
                            aria-label="Submit" ng-click="submit()"></md-button>
             </div>

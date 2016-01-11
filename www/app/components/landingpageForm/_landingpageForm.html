@@ -1,12 +1,12 @@
-<div>
+<div ng-controller="LandingPageFormCtrl">
     <div layout="row" layout-align="center" layout-wrap>
-        <md-button ui-sref="leasingCalculator" flex="100" class="md-raised" translate="LANDINGPAGE_LEASING" aria-label="button"></md-button>
+        <md-button href="#/leasingCalculator/{{global.params.brand}}/{{global.params.model}}" flex="100" class="md-raised" translate="LANDINGPAGE_LEASING" aria-label="button"></md-button>
     </div>
     <div layout="row" layout-align="center" layout-wrap>
-        <md-button ui-sref="testdrive" flex="100" class="md-raised" translate="LANDINGPAGE_TESTDRIVE" aria-label="button"></md-button>
+        <md-button href="#/mainFormular/{{global.params.brand}}/{{global.params.model}}/testdrive" flex="100" class="md-raised" translate="LANDINGPAGE_TESTDRIVE" aria-label="button"></md-button>
     </div>
     <div layout="row" layout-align="center" layout-wrap>
-        <md-button ui-sref="catalog" flex="100" class="md-raised" translate="LANDINGPAGE_CATALOG" aria-label="button"></md-button>
+        <md-button href="#/mainFormular/{{global.params.brand}}/{{global.params.model}}/catalog" flex="100" class="md-raised" translate="LANDINGPAGE_CATALOG" aria-label="button"></md-button>
     </div>
     <br />
     <div layout="row" layout-align="center">
