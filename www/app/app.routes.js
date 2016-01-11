@@ -33,7 +33,7 @@
                 }
             })
             .state('variantList', {
-                url: '/variantList/:brand',
+                url: '/variantList/:brand/:model',
                 views: {
                     '': {
                         templateUrl: 'app/sites/variantList.html'

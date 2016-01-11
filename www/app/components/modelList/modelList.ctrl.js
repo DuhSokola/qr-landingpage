@@ -9,6 +9,8 @@
 
     app.controller('ModelListCtrl', ['$rootScope', '$scope', '$state', 'CarResource','$stateParams', function ($rootScope, $scope, $state, CarResource, $stateParams) {
 
+        $rootScope.global.params.selectedBrand = $stateParams.brand;
+
         CarResource.getByBrand($stateParams.brand, function (response) {
                 $rootScope.global.cars = {
                     brand: response.brand,
@@ -19,10 +21,10 @@
                 console.log('ERROR');
             });
 
-        $scope.route = function (choosenModel) {
+        $scope.route = function (selectedModel) {
             $state.go('landingPage',{
                 brand:$stateParams.brand,
-                model:choosenModel
+                model:selectedModel
             });
         }
 

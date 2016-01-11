@@ -7,13 +7,8 @@
 
     app.controller('VariantListCtrl', ['$rootScope', '$scope', '$state', '$stateParams', function ($rootScope, $scope, $state, $stateParams) {
 
-        $scope.route = function (variantId) {
-            $state.go('landingPage', {
-                brand: $rootScope.global.params.brand,
-                model: $rootScope.global.params.model,
-                variant: variantId
-            });
-        }
+        $rootScope.global.params.selectedBrand = $stateParams.brand;
+        $rootScope.global.params.selectedModel = $stateParams.model;
 
     }]);
 

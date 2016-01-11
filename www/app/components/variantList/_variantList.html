@@ -1,7 +1,8 @@
 <h3>Wählen Sie die gewünschte Variante aus:</h3>
 <div layout="column" ng-controller="VariantListCtrl">
     <div>
-        <md-list-item class="md-3-line" ng-repeat="variant in global.params.variantList" ng-click="route(variant.id)">
+        <!--TODO-->
+        <md-list-item class="md-3-line" ng-repeat="variant in global.params.variantList" href="#/landingPage/{{global.params.selectedBrand}}/{{global.params.selectedModel}}">
             <div class="md-list-item-text">
                 <span style="font-weight: bold; font-size: 18px;">{{variant.name}}</span>
             </div>

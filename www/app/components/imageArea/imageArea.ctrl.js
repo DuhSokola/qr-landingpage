@@ -7,25 +7,21 @@
 
     var app = angular.module('app.imageArea.ctrl', dependencies);
 
-    app.controller('ImageAreaCtrl', ['$rootScope', '$scope', '$state', '$stateParams', function ($rootScope, $scope,$state,$stateParams) {
+    app.controller('ImageAreaCtrl', ['$rootScope', '$scope', '$state', '$stateParams', function ($rootScope, $scope, $state, $stateParams) {
 
-        $scope.route = function(){
-            $state.go('variantList',{
+        $rootScope.$watch('global.params.selectedVariant', function (val) {
+            if ($rootScope.global.params.selectedVariant) {
+                $scope.imageUrl = $rootScope.carsApi + $rootScope.global.params.selectedVariant.picturePaths[0];
+            }
+        });
+
+        $scope.route = function () {
+            $state.go('variantList', {
                 brand: $stateParams.brand,
                 model: $stateParams.model
             });
         };
 
     }]);
-
-    app.filter('moneyFilter', function(){
-        return function(number){
-            var output;
-            if(number.length < 3){
-
-            }
-            return output
-        }
-    })
 
 }());

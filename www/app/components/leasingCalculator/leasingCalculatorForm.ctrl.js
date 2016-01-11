@@ -9,6 +9,10 @@
 
     app.controller('LeasingCalculatorFormCtrl', ['$rootScope', '$scope','$stateParams','LeasingDataResource', function ($rootScope, $scope, $stateParams,LeasingDataResource) {
 
+        $rootScope.global.params.selectedBrand = $stateParams.brand;
+        $rootScope.global.params.selectedModel = $stateParams.model;
+        $rootScope.global.params.selectedMode = null;
+
         $scope.data = {};
         $scope.data.basePrice = 30000;
         $scope.data.payment = 0;

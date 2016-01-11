@@ -6,8 +6,7 @@
     var app = angular.module('app.carDataReader', dependencies);
 
     app.factory('CarDataReader', ['$rootScope', function ($rootScope) {
-        var loadCarDataByModel = function (model) {
-            var brandModels = $rootScope.global.cars.models;
+        var loadCarDataByModel = function (model,brandModels) {
             var modelExists = false;
             for(var i=0; i<brandModels.length; i++){
                 if(brandModels[i].id == model.toLowerCase()){

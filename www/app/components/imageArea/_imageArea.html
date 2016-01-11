@@ -1,7 +1,7 @@
 <div layout="column" ng-controller="ImageAreaCtrl">
     <div>
         <div layout="row" layout-align="center end">
-            <img class="car-contact" src="{{carsApi+global.params.selectedVariant.picturePaths[0]}}">
+            <img class="car-contact" src="{{imageUrl}}">
         </div>
 
         <div layout="row" layout-align="center">
@@ -13,7 +13,7 @@
         </div>
 
         <div layout="row" layout-align="center">
-            <md-button class="md-primary" ng-click="route()" target="_blank" aria-label="models">
+            <md-button class="md-primary" href="#/variantList/{{global.params.selectedBrand}}/{{global.params.selectedModel}}" aria-label="models">
                 <span translate="CONTACT_MODELS"></span>
             </md-button>
         </div>

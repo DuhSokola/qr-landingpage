@@ -11,7 +11,9 @@
 
     app.controller('ContactFormCtrl', ['$rootScope', '$scope', '$translate', '$stateParams', 'LeadResource', function ($rootScope, $scope, $translate, $stateParams,LeadResource) {
 
-        $rootScope.global.params.mode = $stateParams.mode;
+        $rootScope.global.params.selectedBrand = $stateParams.brand;
+        $rootScope.global.params.selectedModel = $stateParams.model;
+        $rootScope.global.params.selectedMode = $stateParams.mode;
 
 
         $scope.emailPattern = '^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$';
@@ -48,8 +50,6 @@
             newsletter: true
         };
         
-        console.log($scope.data);
-
         var setErrorChkbox = function (id) {
             id = '#' + id;
             $(id).removeClass('md-primary');
