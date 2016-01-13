@@ -8,7 +8,7 @@
     var app = angular.module('app.leasingResource',deps);
 
     app.factory('LeasingData',['$rootScope','$resource',function($rootScope, $resource){
-        return $resource($rootScope.carsApi + '/leasing');
+        return $resource($rootScope.leasingApi);
     }]);
 
     app.factory('LeasingDataResource',['LeasingData', function(LeasingData){

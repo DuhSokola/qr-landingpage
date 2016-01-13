@@ -22,7 +22,7 @@
         $scope.data.interestRateEffektive = parseFloat($scope.data.interestRateDefault) + 0.05;
         $scope.data.discount = false;
         $scope.data.discountRate = '3.90';
-        $scope.result=500;
+        $scope.result='-';
 
         $scope.calculate = function(){
             LeasingDataResource.getLeasingCalculation({
@@ -30,14 +30,13 @@
                 interestRate: $scope.data.discount ? $scope.data.discountRate : $scope.data.interestRateDefault,
                 specialPayment: $scope.data.payment,
                 totalAmount: $scope.data.basePrice + $scope.data.payment,
-                month: $scope.data.duration,
+                months: $scope.data.duration,
                 kmPerYear: $scope.data.milage
         },function(result){
-                console.log(result);
-                $scope.result=result;
+                $scope.result=result.monthlyInterest;
             }, function(){
                 console.log('err');
-                $scope.result=2000;
+                $scope.result=7777;
             });
         }
 
