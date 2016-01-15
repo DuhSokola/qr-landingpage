@@ -47,7 +47,8 @@
             leasing: '',
             leasingTyp: '',
             privacyAccepted: '',
-            newsletter: true
+            newsletter: true,
+            brand: $rootScope.global.params.selectedBrand
         };
         
         var setErrorChkbox = function (id) {
@@ -97,7 +98,7 @@
                 setErrorRadio('radio-catalog');
                 isValid = false;
             }
-            if ($scope.data.testdrive && !$scope.data.testdriveTyp) {
+            if ($scope.data.testdrive) {
                 setErrorRadio('radio-testdrive');
                 isValid = false;
             }
@@ -140,7 +141,7 @@
                 isValid = false;
             }
 
-            if (!$scope.data.email || $scope.data.email == '' || $scope.emailPattern.test($scope.data.email)) {
+            if (!$scope.data.email || $scope.data.email == '' || !(new RegExp($scope.emailPattern).test($scope.data.email))) {
                 isValid = false;
             }
 
@@ -151,6 +152,7 @@
             if ($scope.validate()) {
                 console.log('valid');
                 console.log($scope.data);
+                LeadResource.persist($scope.data);
                 return true;
             } else {
                 console.log('invalid');

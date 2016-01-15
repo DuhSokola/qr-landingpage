@@ -23,11 +23,11 @@
                 '&phone='+data.telephone+
                 '&mail='+data.email+
                 '&orderbrochureselectro='+(data.catalogTyp === 'electronic')+
-                '&conditionsAccepted='+data.privacyAccepted.toString()+
+                '&conditionsAccepted='+data.privacyAccepted+
                 '&brand='+data.brand+
                 '&campaigncode='+$rootScope.global.campaign+
-                '&testdrive='+data.testdrive.toString()+
-                '&orderbrochures='+data.catalog.toString()+
+                '&testdrive='+data.testdrive +
+                '&orderbrochures='+data.catalog +
                 '&vlcoptions='+'option_219'+
                 '&company='+
                 '&country='+
