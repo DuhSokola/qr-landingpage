@@ -21,4 +21,17 @@
         };
     }]);
 
+    /*-----------------------------------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------------------------*/
+
+    app.factory('LeasingPromotionDataResource',['$rootScope','$http', function($rootScope, $http){
+        var getLeasingPromotions = function(model,success,error){
+            return $http.get($rootScope.leasingPromotionApi+'/'+model+'_.json').then(success,error);
+        };
+        return {
+            getLeasingPromotions: getLeasingPromotions
+        };
+    }]);
+
 }());

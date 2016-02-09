@@ -15,7 +15,7 @@
     var app = angular.module('app.routes', deps);
 
     app.config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/error');
+        $urlRouterProvider.otherwise('/landingPage/vw/golf/golf_gti');
 
         $stateProvider
             .state('modelList', {
@@ -100,6 +100,18 @@
             .state('error', {
                 url: '/error',
                 templateUrl: 'app/sites/error.html'
+            })
+            .state('impressum', {
+                url: '/impressum',
+                templateUrl: 'app/sites/impressum.html'
+            })
+            .state('terms', {
+                url: '/terms',
+                templateUrl: 'app/sites/terms.html'
+            })
+            .state('policy', {
+                url: '/policy',
+                templateUrl: 'app/sites/policy.html'
             })
 
     });

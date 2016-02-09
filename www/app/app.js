@@ -7,6 +7,7 @@
         'pascalprecht.translate',
         'ngMaterial',
         'ngProgress',
+        'ngSanitize',
         'ngCookies'
     ];
 
@@ -30,7 +31,7 @@
             "LEASINGCALC_DURATION_MONTH": "Monate",
             "LEASINGCALC_MILAGE_KILOMETER": "Km",
             "LEASINGCALC_OFFER": "Aktuelle Leasingangebote",
-            "LEASINGCALC_OFFER_TEXT": "<b>Leasingaktion Generell {{value}}%</b> <br /> Gültig bis: <b>29. Februar 2016</b> <br />Laufzeit: <b>12 - 48 Monate</b> <br /> Jährliche Laufleistung: <b>bis 250000 km</b>",
+            "LEASINGCALC_OFFER_TEXT": "<b>Leasingaktion Generell {{discountRate}}%</b> <br /> Gültig bis: <b>{{validTo}}</b> <br />Laufzeit: <b>{{runningTimeFrom}} - {{runningTimeTo}} Monate</b> <br /> Jährliche Laufleistung: <b>bis {{kmPerYear}} km</b>",
             "LEASINGCALC_CALCULATE": "Berechnen",
             "LEASINGCALC_CONTACT": "Kontaktanfrage",
             "LEASINGCALC_BUTTON_BACK": "Zurück",
@@ -176,8 +177,8 @@
 
         $rootScope.carsApi = 'http://s1100pws428.amag.car.web:8080/readAllModelVariants';
 
-        //TODO
         $rootScope.leasingApi = 'http://s1100pws428.amag.car.web:8080/leasingCalcStatisticModule/leasingCalcWithStatistic';
+        $rootScope.leasingPromotionApi = 'http://www.amag.ch/amagch/corp/de/showroom/leasing/leasingrechner.json.promotion.rest';
 
         $rootScope.global = {};
         $rootScope.global.languages = ['DE', 'FR', 'IT', 'EN'];
@@ -185,9 +186,9 @@
         $rootScope.global.data = {};
         $rootScope.global.params = {};
     });
+    
 
-
-    app.controller('mainCtrl', ['$scope', '$rootScope', 'CarResource', 'ngProgressFactory', 'blockUI', 'CarDataReader', function ($scope, $rootScope, CarResource, ngProgressFactory, blockUI, CarDataReader) {
+    app.controller('mainCtrl', ['$scope', '$rootScope', 'CarResource', 'ngProgressFactory', 'blockUI', 'CarDataReader', 'LeasingPromotionDataResource', function ($scope, $rootScope, CarResource, ngProgressFactory, blockUI, CarDataReader, LeasingPromotionDataResource) {
         $rootScope.$watch('global.params.selectedBrand', function (newVal, oldVal) {
             if (newVal !== oldVal) {
                 $scope.progressbar = ngProgressFactory.createInstance();
@@ -196,6 +197,22 @@
                 CarResource.getByBrand($rootScope.global.params.selectedBrand, function (response) {
                         $rootScope.global.params.allModels = response.models;
                         CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
+                        LeasingPromotionDataResource.getLeasingPromotions($rootScope.global.params.selectedModelVariantObj.versionList[0],function(res){
+                            for(var i = 0; i < res.data.length; i++){
+                                if(res.data[i].id.substring(0,5)=='0001_'){
+                                    res.data.splice(i,1);
+                                    i--;
+                                }
+                            }
+                            $rootScope.global.params.leasingPromotions = res.data;
+                            console.log($rootScope.global.params.leasingPromotions);
+                            $scope.progressbar.complete();
+                            blockUI.stop();
+                        },function(data){
+                            console.log('ERROR');
+                            $scope.progressbar.complete();
+                            blockUI.stop();
+                        });
                         $scope.progressbar.complete();
                         blockUI.stop();
                     },
@@ -216,8 +233,9 @@
         $rootScope.$watch('global.params.selectedModelVariant', function () {
             if ($rootScope.global.params.allModels && $rootScope.global.params.selectedModel && $rootScope.global.params.selectedModelVariant) {
                 CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
+
             }
-        })
+        });
 
         $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
             $rootScope.previousState = from.name;

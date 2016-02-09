@@ -11,12 +11,6 @@
         $rootScope.global.params.selectedModelVariant = $stateParams.modelVariant;
         $rootScope.global.params.selectedMode = null;
 
-        $scope.route = function(){
-            $state.go('modelList',{
-               brand: $rootScope.global.params.selectedBrand
-            });
-        }
-
     }]);
 
 }());
