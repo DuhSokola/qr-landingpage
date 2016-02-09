@@ -195,7 +195,7 @@
                 blockUI.start();
                 CarResource.getByBrand($rootScope.global.params.selectedBrand, function (response) {
                         $rootScope.global.params.allModels = response.models;
-                        CarDataReader.loadCarDataByModel($rootScope.global.params.selectedModel, $rootScope.global.params.allModels);
+                        CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
                         $scope.progressbar.complete();
                         blockUI.stop();
                     },
@@ -209,10 +209,20 @@
 
         $rootScope.$watch('global.params.selectedModel', function () {
             if ($rootScope.global.params.allModels) {
-                CarDataReader.loadCarDataByModel($rootScope.global.params.selectedModel, $rootScope.global.params.allModels);
+                CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
+            }
+        });
+
+        $rootScope.$watch('global.params.selectedModelVariant', function () {
+            if ($rootScope.global.params.allModels && $rootScope.global.params.selectedModel && $rootScope.global.params.selectedModelVariant) {
+                CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
             }
         })
 
+        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+            $rootScope.previousState = from.name;
+            $rootScope.currentState = to.name;
+        });
 
     }]);
 

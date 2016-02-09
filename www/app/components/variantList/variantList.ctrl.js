@@ -9,6 +9,7 @@
 
         $rootScope.global.params.selectedBrand = $stateParams.brand;
         $rootScope.global.params.selectedModel = $stateParams.model;
+        $rootScope.global.params.selectedModelVariant = $stateParams.modelVariant;
 
     }]);
 

@@ -15,7 +15,7 @@
     var app = angular.module('app.routes', deps);
 
     app.config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/landingPage/vw/golf');
+        $urlRouterProvider.otherwise('/error');
 
         $stateProvider
             .state('modelList', {
@@ -33,7 +33,7 @@
                 }
             })
             .state('variantList', {
-                url: '/variantList/:brand/:model',
+                url: '/variantList/:brand/:model/:modelVariant',
                 views: {
                     '': {
                         templateUrl: 'app/sites/variantList.html'
@@ -47,7 +47,7 @@
                 }
             })
             .state('landingPage', {
-                url: '/landingPage/:brand/:model',
+                url: '/landingPage/:brand/:model/:modelVariant',
                 views: {
                     '': {
                         templateUrl: 'app/sites/landingPage.html'
@@ -64,7 +64,7 @@
                 }
             })
             .state('leasingCalculator', {
-                url: '/leasingCalculator/:brand/:model',
+                url: '/leasingCalculator/:brand/:model/:modelVariant',
                 views: {
                     '': {
                         templateUrl: 'app/sites/leasingCalculator.html'
@@ -81,7 +81,7 @@
                 }
             })
             .state('mainFormular', {
-                url: '/mainFormular/:brand/:model/:mode',
+                url: '/mainFormular/:brand/:model/:modelVariant/:mode',
                 views: {
                     '': {
                         templateUrl: 'app/sites/mainFormular.html'
@@ -96,6 +96,10 @@
                         templateUrl: 'app/components/contactForm/_contactForm.html'
                     }
                 }
+            })
+            .state('error', {
+                url: '/error',
+                templateUrl: 'app/sites/error.html'
             })
 
     });

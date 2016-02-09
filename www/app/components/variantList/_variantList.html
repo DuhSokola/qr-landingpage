@@ -1,13 +1,21 @@
 <h3 translate="VARIANTLIST_SELECTMODEL">Wählen Sie die gewünschte Variante aus:</h3>
 <div layout="column" ng-controller="VariantListCtrl">
     <div>
-        <!--TODO-->
-        <md-list-item class="md-3-line" ng-repeat="variant in global.params.variantList" href="#/landingPage/{{global.params.selectedBrand}}/{{global.params.selectedModel}}">
+        <md-list-item ng-if="!global.params.selectedMode" class="md-3-line" ng-repeat="variant in global.params.variantList" href="#/{{previousState}}/{{global.params.selectedBrand}}/{{global.params.selectedModel}}/{{variant.id}}">
             <div class="md-list-item-text">
                 <span style="font-weight: bold; font-size: 18px;">{{variant.name}}</span>
             </div>
             <md-icon md-svg-src="/assets/style/svg/arrow_forward.svg" aria-label="android "></md-icon>
             <md-divider ng-if="!$last"></md-divider>
         </md-list-item>
+
+        <md-list-item ng-if="global.params.selectedMode" class="md-3-line" ng-repeat="variant in global.params.variantList" href="#/{{previousState}}/{{global.params.selectedBrand}}/{{global.params.selectedModel}}/{{variant.id}}/{{global.params.selectedMode}}">
+            <div class="md-list-item-text">
+                <span style="font-weight: bold; font-size: 18px;">{{variant.name}}</span>
+            </div>
+            <md-icon md-svg-src="/assets/style/svg/arrow_forward.svg" aria-label="android "></md-icon>
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+        global.params.selectedMode
     </div>
 </div>

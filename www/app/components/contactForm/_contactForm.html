@@ -182,9 +182,9 @@
                 </div>
             </fieldset>
             <div layout="row">
-                <md-button type="button" href="#/leasingCalculator/{{global.params.selectedBrand}}/{{global.params.selectedModel}}" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
+                <md-button type="button" href="#/leasingCalculator/{{global.params.selectedBrand}}/{{global.params.selectedModel}}/{{global.params.selectedModelVariant}}" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
                            aria-label="Back" ng-if="global.params.selectedMode == 'leasing'"></md-button>
-                <md-button type="button" href="#/landingPage/{{global.params.selectedBrand}}/{{global.params.selectedModel}}" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
+                <md-button type="button" href="#/landingPage/{{global.params.selectedBrand}}/{{global.params.selectedModel}}/{{global.params.selectedModelVariant}}" class="md-raised" flex="50" translate="CONTACT_BUTTON_BACK"
                            aria-label="Back" ng-if="global.params.selectedMode != 'leasing'"></md-button>
                 <md-button type="submit" class="md-raised md-primary" flex="50" translate="CONTACT_BUTTON_SUBMIT"
                            aria-label="Submit" ng-click="submit()"></md-button>
