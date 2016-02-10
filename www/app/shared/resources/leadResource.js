@@ -44,6 +44,8 @@
                 '&currentBrand='+
                 '&currentModel=';
 
+            console.log(dataStuff);
+
             $.ajax({
                 type: 'POST',
                 async: false,

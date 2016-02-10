@@ -43,7 +43,7 @@
             email: '',
             catalog: $stateParams.mode == 'catalog',
             catalogTyp: ($stateParams.mode == 'catalog')? 'electronic':'',
-            testdrive: $stateParams.mode == 'testdrive',
+            testdrive: $stateParams.mode == 'testdrive' || $stateParams.mode == 'leasing',
             testdriveTyp: '',
             leasing: '',
             leasingTyp: '',
@@ -99,7 +99,7 @@
                 setErrorRadio('radio-catalog');
                 isValid = false;
             }
-            if ($scope.data.testdrive) {
+            if (!$scope.data.testdrive) {
                 setErrorRadio('radio-testdrive');
                 isValid = false;
             }
