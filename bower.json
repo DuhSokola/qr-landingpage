@@ -16,5 +16,8 @@
     "angular-block-ui": "~0.2.2",
     "angular-cookies": "~1.4.8",
     "ngSanitize": "~0.0.2"
+  },
+  "resolutions": {
+    "angular": "1.4.7"
   }
 }
