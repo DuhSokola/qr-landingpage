@@ -4,7 +4,6 @@
     'use strict';
 
     var defaults = {
-        serverHost: 'localhost',
         serverPort: 8080,
         appName: 'qrlandingpagefrontend',
         staticFolder: 'src'
