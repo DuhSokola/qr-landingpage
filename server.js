@@ -5,6 +5,7 @@
 
     var defaults = {
         serverHost: 'localhost',
+        serverPort: 3000,
         appName: 'qrlandingpagefrontend',
         staticFolder: 'src'
     };
