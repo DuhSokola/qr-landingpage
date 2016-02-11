@@ -10,4 +10,6 @@ npm install
 
 bower install
 
+gulp inject
+
 gulp serve
