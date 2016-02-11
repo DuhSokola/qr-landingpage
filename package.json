@@ -2,7 +2,7 @@
   "name": "qrlandingpagefrontend",
   "version": "0.0.1",
   "description": "QR-Landing Frontend Pages",
-  "main": "gulpfile.js",
+  "main": "app.js",
   "dependencies": {
     "gulp": "^3.9.0",
     "browser-sync": "^2.11.1",
