@@ -1,15 +1,32 @@
 {
-  "name": "dynamicTest",
-  "version": "1.1.1",
-  "description": "ion-host-ui: An Ionic project",
-  "devDependencies": {
-    "browser-sync": "^2.9.11",
+  "name": "qrlandingpagefrontend",
+  "version": "0.0.1",
+  "description": "QR-Landing Frontend Pages",
+  "main": "gulpfile.js",
+  "dependencies": {
     "gulp": "^3.9.0",
-    "gulp-debug": "^2.1.2",
-    "gulp-inject": "^3.0.0",
-    "gulp-useref": "^3.0.4",
+    "browser-sync": "^2.11.1",
     "gulp-util": "^2.2.20",
-    "merge-stream": "^1.0.0",
-    "wiredep": "^2.2.2"
+    "gulp-debug": "^2.1.2",
+    "wiredep": "^2.2.2",
+    "gulp-useref": "^3.0.5",
+    "gulp-inject": "^3.0.0",
+    "merge-stream": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuhSokola/qr-landingpage.git"
+  },
+  "author": "Webtech AMAG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuhSokola/qr-landingpage/issues"
+  },
+  "homepage": "https://github.com/DuhSokola/qr-landingpage#readme",
+  "engines": {
+    "node": "4.2.4"
   }
 }
