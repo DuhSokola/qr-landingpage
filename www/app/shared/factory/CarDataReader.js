@@ -5,8 +5,6 @@
 
     var app = angular.module('app.carDataReader', dependencies);
 
-
-
     app.factory('CarDataReader', ['$rootScope', function ($rootScope) {
         var loadCarDataByModel = function (brandModels, model, modelVariant) {
             for (var i = 0; i < brandModels.length; i++) {
@@ -41,7 +39,7 @@
                         $rootScope.global.params.selectedModelVariantObj = brandModels[i].variantList[0];
                     }
                     $rootScope.global.params.variantList = brandModels[i].variantList;
-                    console.log(brandModels[i].variantList);
+                    //console.log(brandModels[i].variantList);
                     return true;
                 }
             }

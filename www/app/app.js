@@ -106,8 +106,8 @@
             "LEASINGCALC_PAYMENT_FRANCS": "[FR]CHF",
             "LEASINGCALC_DURATION_MONTH": "[FR]Monate",
             "LEASINGCALC_MILAGE_KILOMETER": "[FR]Km",
-            "LEASINGCALC_OFFER": "[FR]Aktuelle Leasingangebote",
-            "LEASINGCALC_OFFER_TEXT": "[FR]<b>Leasingaktion Generell {{value}}%</b> <br /> Gültig bis: <b>29. Februar 2016</b> <br />Laufzeit: <b>12 - 48 Monate</b> <br /> Jährliche Laufleistung: <b>bis 250000 km</b>",
+            "LEASINGCALC_OFFER": "Aktuelle Leasingangebote",
+            "LEASINGCALC_OFFER_TEXT": "[FR]<b>Leasingaktion Generell {{discountRate}}%</b> <br /> Gültig bis: <b>{{validTo}}</b> <br />Laufzeit: <b>{{runningTimeFrom}} - {{runningTimeTo}} Monate</b> <br /> Jährliche Laufleistung: <b>bis {{kmPerYear}} km</b>",
             "LEASINGCALC_CALCULATE": "[FR]Berechnen",
             "LEASINGCALC_CONTACT": "[FR]Kontaktanfrage",
             "LEASINGCALC_BUTTON_BACK": "[FR]Zurück",
@@ -169,7 +169,158 @@
             "CONTACT_ERROR_PRIVACY": "[FR]Datenschutzbestimmung pflicht"
         });
 
-        $translateProvider.preferredLanguage('DE');
+        $translateProvider.translations('IT', {
+            "TITLE": "[IT]QR-Landingpage",
+            "MODELLIST_SELECTMODEL": "[IT]Wählen Sie das gewünschte Model aus:",
+            "VARIANTLIST_SELECTMODEL": "[IT]Wählen Sie die gewünschte Variante aus:",
+            "IMAGEAREA_FROM": "[IT]Erhältlich ab",
+            "IMAGEAREA_FRANCS": "[IT]CHF",
+
+            "LEASINGCALC_PAYMENT": "[IT]Sonderzahlung:",
+            "LEASINGCALC_DURATION": "[IT]Laufzeit:",
+            "LEASINGCALC_MILAGE": "[IT]Jährliche Laufleistung:",
+            "LEASINGCALC_PAYMENT_FRANCS": "[IT]CHF",
+            "LEASINGCALC_DURATION_MONTH": "[IT]Monate",
+            "LEASINGCALC_MILAGE_KILOMETER": "[IT]Km",
+            "LEASINGCALC_OFFER": "[IT]Aktuelle Leasingangebote",
+            "LEASINGCALC_OFFER_TEXT": "[IT]<b>Leasingaktion Generell {{discountRate}}%</b> <br /> Gültig bis: <b>{{validTo}}</b> <br />Laufzeit: <b>{{runningTimeFrom}} - {{runningTimeTo}} Monate</b> <br /> Jährliche Laufleistung: <b>bis {{kmPerYear}} km</b>",
+            "LEASINGCALC_CALCULATE": "[IT]Berechnen",
+            "LEASINGCALC_CONTACT": "[IT]Kontaktanfrage",
+            "LEASINGCALC_BUTTON_BACK": "[IT]Zurück",
+            "LEASINGCALC_MOTHLY_PAYMENT": "[IT]Monatliche Rate:",
+            "LEASINGCALC_CHF": "[IT]CHF",
+            "LEASINGCALC_INTERESTRATE": "[IT]Zinssatz:",
+            "LEASINGCALC_INTERESTRATE_NOMINAL": "[IT]Nominal:",
+            "LEASINGCALC_INTERESTRATE_EFFEKTIVE": "[IT]Effektiv:",
+
+            "LANDINGPAGE_LEASING": "[IT]Leasing berechnen",
+            "LANDINGPAGE_TESTDRIVE": "[IT]Probefahrt",
+            "LANDINGPAGE_CATALOG": "[IT]Katalog",
+            "LANDINGPAGE_BACK_TO_MODELLIST": "[IT]Zur Modelübersicht",
+
+            "CONTACT_LEGEND_CUSTOMER_DATA": "[IT]Ihre Daten",
+            "CONTACT_LEGEND_CATALOG": "[IT]Katalogversand",
+            "CONTACT_LEGEND_TESTDRIVE": "[IT]Probefahrt",
+            "CONTACT_LEGEND_LEASING": "[IT]Leasing",
+            "CONTACT_LEGEND_NEWSLETTER": "[IT]Newsletter",
+            "CONTACT_LEGEND_PRIVACY": "[IT]Datenschutzbestimmung",
+            "CONTACT_MODELS": "[IT]Weitere Varianten",
+            "CONTACT_SALUTATION_MR": "[IT]Herr",
+            "CONTACT_SALUTATION_MRS": "[IT]Frau",
+            "CONTACT_SALUTATION": "[IT]Anrede",
+            "CONTACT_FIRSTNAME": "[IT]Vorname",
+            "CONTACT_LASTNAME": "[IT]Name",
+            "CONTACT_STREET": "[IT]Strasse",
+            "CONTACT_STREET_NR": "[IT]Strassen Nr.",
+            "CONTACT_ZIP": "[IT]PLZ",
+            "CONTACT_CITY": "[IT]Ort",
+            "CONTACT_TELEPHONE": "[IT]Telefon",
+            "CONTACT_EMAIL": "[IT]Email",
+            "CONTACT_CATALOG": "[IT]Katalog bestellen",
+            "CONTACT_CATALOG_ELECTRONIC": "[IT]Elektronisch",
+            "CONTACT_CATALOG_PRINTED": "[IT]Gedruckt",
+            "CONTACT_TESTDRIVE": "[IT]Kontaktaufnahme für Probefahrt",
+            "CONTACT_TESTDRIVE_EMAIL": "[IT]per Email",
+            "CONTACT_TESTDRIVE_TELEFON": "[IT]per Telefon",
+            "CONTACT_LEASING": "[IT]Kontaktaufnahme für Leasingsberatung",
+            "CONTACT_LEASING_EMAIL": "[IT]per Email",
+            "CONTACT_LEASING_TELEPHONE": "[IT]per Telefon",
+            "CONTACT_NEWSLETTER": "[IT]Ich möchte Newsletter erhalten",
+            "CONTACT_PRIVACY": "[IT]Ich bin mit den Datenschutzbestimmungen einverstanden",
+            "CONTACT_BUTTON_SUBMIT": "[IT]Senden",
+            "CONTACT_BUTTON_BACK": "[IT]Zurück",
+            "CONTACT_ERROR_SALUTATION": "[IT]Anrede pflicht",
+            "CONTACT_ERROR_FIRSTNAME": "[IT]Vorname pflicht",
+            "CONTACT_ERROR_LASTNAME": "[IT]Name pflicht",
+            "CONTACT_ERROR_STREET": "[IT]Strasse pflicht",
+            "CONTACT_ERROR_STREET_NR": "[IT]Strassen Nummer pflicht",
+            "CONTACT_ERROR_ZIP": "[IT]PLZ pflicht",
+            "CONTACT_ERROR_CITY": "[IT]Ort pflicht",
+            "CONTACT_ERROR_TELEPHONE": "[IT]Telefon pflicht",
+            "CONTACT_ERROR_EMAIL": "[IT]Geben Sie valide Email ein",
+            "CONTACT_ERROR_CATALOG": "[IT]Katalog pflicht",
+            "CONTACT_ERROR_TESTDRIVE": "[IT]Probefahrt pflicht",
+            "CONTACT_ERROR_LEASING": "[IT]Leasing pflicht",
+            "CONTACT_ERROR_NEWSLETTER": "[IT]Newsletter pflicht",
+            "CONTACT_ERROR_PRIVACY": "[IT]Datenschutzbestimmung pflicht"
+        });
+
+        $translateProvider.translations('EN', {
+            "TITLE": "[EN]QR-Landingpage",
+            "MODELLIST_SELECTMODEL": "[EN]Wählen Sie das gewünschte Model aus:",
+            "VARIANTLIST_SELECTMODEL": "[EN]Wählen Sie die gewünschte Variante aus:",
+            "IMAGEAREA_FROM": "[EN]Erhältlich ab",
+            "IMAGEAREA_FRANCS": "[EN]CHF",
+
+            "LEASINGCALC_PAYMENT": "[EN]Sonderzahlung:",
+            "LEASINGCALC_DURATION": "[EN]Laufzeit:",
+            "LEASINGCALC_MILAGE": "[EN]Jährliche Laufleistung:",
+            "LEASINGCALC_PAYMENT_FRANCS": "[EN]CHF",
+            "LEASINGCALC_DURATION_MONTH": "[EN]Monate",
+            "LEASINGCALC_MILAGE_KILOMETER": "[EN]Km",
+            "LEASINGCALC_OFFER": "[EN]Aktuelle Leasingangebote",
+            "LEASINGCALC_OFFER_TEXT": "[EN]<b>Leasingaktion Generell {{discountRate}}%</b> <br /> Gültig bis: <b>{{validTo}}</b> <br />Laufzeit: <b>{{runningTimeFrom}} - {{runningTimeTo}} Monate</b> <br /> Jährliche Laufleistung: <b>bis {{kmPerYear}} km</b>",
+            "LEASINGCALC_CALCULATE": "[EN]Berechnen",
+            "LEASINGCALC_CONTACT": "[EN]Kontaktanfrage",
+            "LEASINGCALC_BUTTON_BACK": "[EN]Zurück",
+            "LEASINGCALC_MOTHLY_PAYMENT": "[EN]Monatliche Rate:",
+            "LEASINGCALC_CHF": "[EN]CHF",
+            "LEASINGCALC_INTERESTRATE": "[EN]Zinssatz:",
+            "LEASINGCALC_INTERESTRATE_NOMINAL": "[EN]Nominal:",
+            "LEASINGCALC_INTERESTRATE_EFFEKTIVE": "[EN]Effektiv:",
+
+            "LANDINGPAGE_LEASING": "[EN]Leasing berechnen",
+            "LANDINGPAGE_TESTDRIVE": "[EN]Probefahrt",
+            "LANDINGPAGE_CATALOG": "[EN]Katalog",
+            "LANDINGPAGE_BACK_TO_MODELLIST": "[EN]Zur Modelübersicht",
+
+            "CONTACT_LEGEND_CUSTOMER_DATA": "[EN]Ihre Daten",
+            "CONTACT_LEGEND_CATALOG": "[EN]Katalogversand",
+            "CONTACT_LEGEND_TESTDRIVE": "[EN]Probefahrt",
+            "CONTACT_LEGEND_LEASING": "[EN]Leasing",
+            "CONTACT_LEGEND_NEWSLETTER": "[EN]Newsletter",
+            "CONTACT_LEGEND_PRIVACY": "[EN]Datenschutzbestimmung",
+            "CONTACT_MODELS": "[EN]Weitere Varianten",
+            "CONTACT_SALUTATION_MR": "[EN]Herr",
+            "CONTACT_SALUTATION_MRS": "[EN]Frau",
+            "CONTACT_SALUTATION": "[EN]Anrede",
+            "CONTACT_FIRSTNAME": "[EN]Vorname",
+            "CONTACT_LASTNAME": "[EN]Name",
+            "CONTACT_STREET": "[EN]Strasse",
+            "CONTACT_STREET_NR": "[EN]Strassen Nr.",
+            "CONTACT_ZIP": "[EN]PLZ",
+            "CONTACT_CITY": "[EN]Ort",
+            "CONTACT_TELEPHONE": "[EN]Telefon",
+            "CONTACT_EMAIL": "[EN]Email",
+            "CONTACT_CATALOG": "[EN]Katalog bestellen",
+            "CONTACT_CATALOG_ELECTRONIC": "[EN]Elektronisch",
+            "CONTACT_CATALOG_PRINTED": "[EN]Gedruckt",
+            "CONTACT_TESTDRIVE": "[EN]Kontaktaufnahme für Probefahrt",
+            "CONTACT_TESTDRIVE_EMAIL": "[EN]per Email",
+            "CONTACT_TESTDRIVE_TELEFON": "[EN]per Telefon",
+            "CONTACT_LEASING": "[EN]Kontaktaufnahme für Leasingsberatung",
+            "CONTACT_LEASING_EMAIL": "[EN]per Email",
+            "CONTACT_LEASING_TELEPHONE": "[EN]per Telefon",
+            "CONTACT_NEWSLETTER": "[EN]Ich möchte Newsletter erhalten",
+            "CONTACT_PRIVACY": "[EN]Ich bin mit den Datenschutzbestimmungen einverstanden",
+            "CONTACT_BUTTON_SUBMIT": "[EN]Senden",
+            "CONTACT_BUTTON_BACK": "[EN]Zurück",
+            "CONTACT_ERROR_SALUTATION": "[EN]Anrede pflicht",
+            "CONTACT_ERROR_FIRSTNAME": "[EN]Vorname pflicht",
+            "CONTACT_ERROR_LASTNAME": "[EN]Name pflicht",
+            "CONTACT_ERROR_STREET": "[EN]Strasse pflicht",
+            "CONTACT_ERROR_STREET_NR": "[EN]Strassen Nummer pflicht",
+            "CONTACT_ERROR_ZIP": "[EN]PLZ pflicht",
+            "CONTACT_ERROR_CITY": "[EN]Ort pflicht",
+            "CONTACT_ERROR_TELEPHONE": "[EN]Telefon pflicht",
+            "CONTACT_ERROR_EMAIL": "[EN]Geben Sie valide Email ein",
+            "CONTACT_ERROR_CATALOG": "[EN]Katalog pflicht",
+            "CONTACT_ERROR_TESTDRIVE": "[EN]Probefahrt pflicht",
+            "CONTACT_ERROR_LEASING": "[EN]Leasing pflicht",
+            "CONTACT_ERROR_NEWSLETTER": "[EN]Newsletter pflicht",
+            "CONTACT_ERROR_PRIVACY": "[EN]Datenschutzbestimmung pflicht"
+        });
+        $translateProvider.preferredLanguage('EN');
     });
 
     app.run(function ($rootScope) {
@@ -181,7 +332,7 @@
         $rootScope.leasingPromotionApi = 'http://www.amag.ch/amagch/corp/de/showroom/leasing/leasingrechner.json.promotion.rest';
 
         $rootScope.global = {};
-        $rootScope.global.languages = ['DE', 'FR', 'IT', 'EN'];
+        $rootScope.global.languages = ['EN', 'DE', 'FR', 'IT'];
         $rootScope.global.campaign = 'autosalon_2016_ipad';
         $rootScope.global.data = {};
         $rootScope.global.params = {};
@@ -205,7 +356,7 @@
                                 }
                             }
                             $rootScope.global.params.leasingPromotions = res.data;
-                            console.log($rootScope.global.params.leasingPromotions);
+                            //console.log($rootScope.global.params.leasingPromotions);
                             $scope.progressbar.complete();
                             blockUI.stop();
                         },function(data){
