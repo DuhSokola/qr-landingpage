@@ -153,7 +153,7 @@
             if ($scope.validate()) {
                 console.log('valid');
                 console.log($scope.data);
-                $scope.data.option = $rootScope.global.params.selectedModelVariantObj.versionList[0].id
+                $scope.data.option = $rootScope.global.params.selectedModelVariantObj.versionList[0].id;
                 LeadResource.persist($scope.data);
                 return true;
             } else {
