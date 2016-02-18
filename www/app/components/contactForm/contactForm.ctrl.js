@@ -150,7 +150,7 @@
         };
 
         $scope.submit = function () {
-            if (/*$scope.validate()*/true) {
+            if ($scope.validate()) {
                 console.log('valid');
                 console.log($scope.data);
                 $scope.data.option = $rootScope.global.params.selectedModelVariantObj.versionList[0].id

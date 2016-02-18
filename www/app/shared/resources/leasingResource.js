@@ -14,7 +14,7 @@
     app.factory('LeasingDataResource',['LeasingData', function(LeasingData){
 
         var getLeasingCalculation = function(query, success,error){
-            return {"interestRateNominal":"5.40","interestRateEffective":"5.54","monthlyInterest":"897.69"};
+            return success({"interestRateNominal":"5.40","interestRateEffective":"5.54","monthlyInterest":"897.69"});
             //return LeasingData.get(query,success,error);
         };
         return {
