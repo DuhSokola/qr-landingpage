@@ -59,7 +59,7 @@
                 error: error
             });*/
 
-            $.ajax({
+            /*$.ajax({
                 type: 'POST',
                 async: false,
                 data: dataStuff,
@@ -67,7 +67,7 @@
                 url: 'http://localhost:8080/leadsubmission',
                 success: success,
                 error: error
-            });
+            });*/
         };
 
         return {

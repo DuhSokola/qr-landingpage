@@ -38,6 +38,7 @@
                 months: $scope.data.duration,
                 kmPerYear: $scope.data.milage
             }, function (result) {
+                console.log(result);
                 $scope.result = result.monthlyInterest;
             }, function () {
                 console.log('err');

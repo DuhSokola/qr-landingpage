@@ -12,6 +12,8 @@
         $rootScope.global.params.selectedBrand = $stateParams.brand;
 
         CarResource.getByBrand($stateParams.brand, function (response) {
+                console.log(333);
+                console.log(response);
                 $rootScope.global.cars = {
                     brand: response.brand,
                     models: response.models
