@@ -11,6 +11,9 @@
     app.factory('LeadResource', ['$rootScope','$translate',function ($rootScope,$translate) {
 
         var persist = function (data, success, error) {
+
+            // OPTION_219!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             var dataStuff =
                 'salutation='+(data.salutation==='Mr'?'m':'f')+
                 '&lang='+$translate.use().toLowerCase()+
@@ -46,12 +49,22 @@
 
             console.log(dataStuff);
 
-            $.ajax({
+            /*$.ajax({
                 type: 'POST',
                 async: false,
                 data: dataStuff,
                 timeout: 3000,
                 url: 'https://www.leadcollector.amag.ch/exhibitionapp/backend/leadsubmission',
+                success: success,
+                error: error
+            });*/
+
+            $.ajax({
+                type: 'POST',
+                async: false,
+                data: dataStuff,
+                timeout: 3000,
+                url: 'http://localhost:8080/leadsubmission',
                 success: success,
                 error: error
             });

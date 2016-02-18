@@ -150,9 +150,10 @@
         };
 
         $scope.submit = function () {
-            if ($scope.validate()) {
+            if (/*$scope.validate()*/true) {
                 console.log('valid');
                 console.log($scope.data);
+                $scope.data.option = $rootScope.global.params.selectedModelVariantObj.versionList[0].id
                 LeadResource.persist($scope.data);
                 return true;
             } else {
