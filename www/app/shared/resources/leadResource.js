@@ -15,7 +15,7 @@
             // OPTION_219!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             var dataStuff =
-                'salutation='+(data.salutation==='Mr'?'m':'f')+
+                'salutation='+(data.salutation.toLowerCase()==='mr'?'m':'f')+
                 '&lang='+$translate.use().toLowerCase()+
                 '&name='+data.firstName+
                 '&surname='+data.lastName+
@@ -59,7 +59,7 @@
                 error: error
             });*/
 
-            /*$.ajax({
+            $.ajax({
                 type: 'POST',
                 async: false,
                 data: dataStuff,
@@ -67,7 +67,7 @@
                 url: 'http://localhost:8080/leadsubmission',
                 success: success,
                 error: error
-            });*/
+            });
         };
 
         return {
