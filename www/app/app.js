@@ -326,10 +326,10 @@
     app.run(function ($rootScope) {
         $rootScope.cssFileName = 'main';
 
-        $rootScope.carsApi = 'http://s1100pws428.amag.car.web:8080/readAllModelVariants';
+        $rootScope.carsApi = 'http://leadcollector.amag.ch/readAllModelVariants';
 
-        $rootScope.leasingApi = 'http://s1100pws428.amag.car.web:8080/leasingCalcStatisticModule/leasingCalcWithStatistic';
-        $rootScope.leasingPromotionApi = 'http://www.amag.ch/amagch/corp/de/showroom/leasing/leasingrechner.json.promotion.rest';
+        $rootScope.leasingApi = 'http://leadcollector.amag.ch/leasingCalcStatisticModule/leasingCalcWithStatistic';
+        $rootScope.leasingPromotionApi = 'http://leadcollector.amag.ch/leasingCalcStatisticModule/leasingPromotions';
 
         $rootScope.global = {};
         $rootScope.global.languages = ['EN', 'DE', 'FR', 'IT'];
@@ -337,7 +337,7 @@
         $rootScope.global.data = {};
         $rootScope.global.params = {};
     });
-    
+
 
     app.controller('mainCtrl', ['$scope', '$rootScope', 'CarResource', 'ngProgressFactory', 'blockUI', 'CarDataReader', 'LeasingPromotionDataResource', function ($scope, $rootScope, CarResource, ngProgressFactory, blockUI, CarDataReader, LeasingPromotionDataResource) {
         $rootScope.$watch('global.params.selectedBrand', function (newVal, oldVal) {
@@ -348,10 +348,11 @@
                 CarResource.getByBrand($rootScope.global.params.selectedBrand, function (response) {
                         $rootScope.global.params.allModels = response.models;
                         CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
-                        LeasingPromotionDataResource.getLeasingPromotions($rootScope.global.params.selectedModel,function(res){
-                            for(var i = 0; i < res.data.length; i++){
-                                if(res.data[i].id.substring(0,5)=='0001_'){
-                                    res.data.splice(i,1);
+                        console.log($rootScope.global.params);
+                        LeasingPromotionDataResource.getLeasingPromotions($rootScope.global.params.selectedModelVariantObj, function (res) {
+                            for (var i = 0; i < res.data.length; i++) {
+                                if (res.data[i].id.substring(0, 5) == '0001_') {
+                                    res.data.splice(i, 1);
                                     i--;
                                 }
                             }
@@ -359,7 +360,7 @@
                             //console.log($rootScope.global.params.leasingPromotions);
                             $scope.progressbar.complete();
                             blockUI.stop();
-                        },function(data){
+                        }, function (data) {
                             console.log('ERROR');
                             $scope.progressbar.complete();
                             blockUI.stop();
@@ -378,17 +379,38 @@
         $rootScope.$watch('global.params.selectedModel', function () {
             if ($rootScope.global.params.allModels) {
                 CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
+                LeasingPromotionDataResource.getLeasingPromotions($rootScope.global.params.selectedModelVariantObj, function (res) {
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data[i].id.substring(0, 5) == '0001_') {
+                            res.data.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    $rootScope.global.params.leasingPromotions = res.data;
+                }, function (data) {
+                    console.log('ERROR LEASING PROMOTIONS');
+                });
             }
         });
 
         $rootScope.$watch('global.params.selectedModelVariant', function () {
             if ($rootScope.global.params.allModels && $rootScope.global.params.selectedModel && $rootScope.global.params.selectedModelVariant) {
                 CarDataReader.loadCarDataByModel($rootScope.global.params.allModels, $rootScope.global.params.selectedModel, $rootScope.global.params.selectedModelVariant);
-
+                LeasingPromotionDataResource.getLeasingPromotions($rootScope.global.params.selectedModelVariantObj, function (res) {
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data[i].id.substring(0, 5) == '0001_') {
+                            res.data.splice(i, 1);
+                            i--;
+                        }
+                    }
+                    $rootScope.global.params.leasingPromotions = res.data;
+                }, function (data) {
+                    console.log('ERROR LEASING PROMOTIONS');
+                });
             }
         });
 
-        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+        $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
             $rootScope.previousState = from.name;
             $rootScope.currentState = to.name;
         });
