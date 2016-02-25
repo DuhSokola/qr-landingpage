@@ -21,6 +21,7 @@
             }
             $scope.selectedLanguage = langExists ? navigator.language.toUpperCase() : $scope.languages[0];
             $translate.use($scope.selectedLanguage);
+            $rootScope.global.language = $scope.selectedLanguage;
         }
 
         $scope.$watch('selectedLanguage',function(newValue, oldValue){

@@ -27,11 +27,11 @@
                 '&mail='+data.email+
                 '&orderbrochureselectro='+(data.catalogTyp === 'electronic')+
                 '&conditionsAccepted='+data.privacyAccepted+
-                '&brand='+data.brand+
-                '&campaigncode='+$rootScope.global.campaign+
+                '&brand='+data.brand +
+                '&campaigncode='+$rootScope.global.campaign +
                 '&testdrive='+data.testdrive +
                 '&orderbrochures='+data.catalog +
-                '&vlcoptions='+'option_219'+
+                '&vlcoptions='+'option_19'+
                 '&company='+
                 '&country='+
                 '&dealer='+
@@ -49,7 +49,7 @@
 
             console.log(dataStuff);
 
-            /*$.ajax({
+            $.ajax({
                 type: 'POST',
                 async: false,
                 data: dataStuff,
@@ -57,9 +57,9 @@
                 url: 'https://www.leadcollector.amag.ch/exhibitionapp/backend/leadsubmission',
                 success: success,
                 error: error
-            });*/
+            });
 
-            $.ajax({
+            /*$.ajax({
                 type: 'POST',
                 async: false,
                 data: dataStuff,
@@ -67,7 +67,7 @@
                 url: 'http://localhost:8080/leadsubmission',
                 success: success,
                 error: error
-            });
+            });*/
         };
 
         return {
